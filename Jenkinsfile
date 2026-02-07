@@ -12,6 +12,11 @@ pipeline {
     }
 
     parameters {
+        string(
+            name: 'GIT_BRANCH',
+            defaultValue: 'main',
+            description: 'Git branch to checkout (main, develop, feature/*, etc.)'
+        )
         booleanParam(
             name: 'HEADLESS_MODE',
             defaultValue: true,
@@ -30,12 +35,61 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
+        stage('Checkout Code from Git') {
             steps {
-                echo '========================================='
-                echo 'STAGE: Checkout Code'
-                echo '========================================='
-                checkout scm
+                script {
+                    echo '========================================='
+                    echo 'STAGE: Checkout Code from Git'
+                    echo '========================================='
+
+                    // Display Git information
+                    echo "Repository: ${env.GIT_URL ?: 'Not configured'}"
+                    echo "Branch: ${params.GIT_BRANCH}"
+                    echo "Workspace: ${WORKSPACE}"
+
+                    // Clean workspace before checkout
+                    deleteDir()
+
+                    // Method 1: Using checkout with Git plugin (Recommended)
+                    // This method works with both public and private repositories
+                    checkout([
+                        $class: 'GitSCM',
+                        branches: [[name: "*/${params.GIT_BRANCH}"]],
+                        doGenerateSubmoduleConfigurations: false,
+                        extensions: [
+                            [$class: 'CleanBeforeCheckout'],
+                            [$class: 'CloneOption', depth: 0, noTags: false, shallow: false],
+                            [$class: 'SubmoduleOption', recursiveSubmodules: true]
+                        ],
+                        userRemoteConfigs: [[
+                            // Public repository - no credentials needed
+                            url: 'https://github.com/Naul2354/PLT-Test.git'
+
+                            // If repository becomes private, uncomment and add credentials:
+                            // url: 'https://github.com/Naul2354/PLT-Test.git',
+                            // credentialsId: 'github-credentials'
+
+                            // For SSH (with SSH key):
+                            // url: 'git@github.com:Naul2354/PLT-Test.git',
+                            // credentialsId: 'github-ssh-key'
+                        ]]
+                    ])
+
+                    // Verify checkout
+                    sh '''
+                        echo "\n✓ Code checked out successfully"
+                        echo "\nGit Information:"
+                        git --version
+                        echo "\nCurrent Branch:"
+                        git branch -a
+                        echo "\nLatest Commit:"
+                        git log -1 --oneline
+                        echo "\nRepository Status:"
+                        git status
+                        echo "\nChecked out files:"
+                        ls -la
+                    '''
+                }
             }
         }
 
