@@ -1,14 +1,15 @@
 pipeline {
     agent any
 
-    tools {
-        maven 'Maven' // Configure in Jenkins: Manage Jenkins → Global Tool Configuration
-        jdk 'JDK-17' // Configure in Jenkins: Manage Jenkins → Global Tool Configuration
-    }
+    // Removed tools section - will use system defaults
+    // If you need specific versions, configure in Jenkins Global Tool Configuration
 
     environment {
         // Chrome settings for headless mode
         CHROME_OPTIONS = '--headless --no-sandbox --disable-dev-shm-usage --disable-gpu'
+        // Use system Java and Maven
+        JAVA_HOME = '/opt/java/openjdk'
+        PATH = "${JAVA_HOME}/bin:${env.PATH}"
     }
 
     parameters {
