@@ -105,7 +105,7 @@ pipeline {
                         java -version
 
                         echo "\nMaven Version:"
-                        mvn -version
+                        mvn -version || echo "Maven not found - will be installed in next stage"
 
                         echo "\nChrome Version:"
                         google-chrome --version || chromium-browser --version || echo "Chrome not found"
