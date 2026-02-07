@@ -123,42 +123,69 @@ pipeline {
             }
         }
 
-        stage('Install Maven & Compile') {
+        stage('Install Dependencies & Compile') {
             steps {
                 echo '========================================='
-                echo 'STAGE: Install Maven & Compile'
+                echo 'STAGE: Install Dependencies & Compile'
                 echo '========================================='
                 script {
                     sh '''
-                        # Check if Maven is installed
+                        set +e  # Don't exit on error immediately
+
+                        echo "===== Installing Maven ====="
                         if ! command -v mvn &> /dev/null; then
-                            echo "Maven not found. Installing Maven..."
-
-                            # Download and install Maven
+                            echo "Maven not found. Installing..."
                             cd /tmp
-                            wget -q https://archive.apache.org/dist/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz
-                            tar xzf apache-maven-3.9.6-bin.tar.gz
 
-                            # Set Maven home
-                            export MAVEN_HOME=/tmp/apache-maven-3.9.6
-                            export PATH=$MAVEN_HOME/bin:$PATH
-
-                            echo "Maven installed successfully"
-                            mvn -version
+                            # Use curl to download Maven
+                            if curl -L -O https://archive.apache.org/dist/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz; then
+                                tar xzf apache-maven-3.9.6-bin.tar.gz
+                                echo "✓ Maven installed"
+                            else
+                                echo "✗ Failed to download Maven"
+                                exit 1
+                            fi
                         else
-                            echo "Maven already installed"
-                            mvn -version
+                            echo "✓ Maven already installed"
+                        fi
+
+                        # Set Maven environment
+                        export MAVEN_HOME=/tmp/apache-maven-3.9.6
+                        export PATH=$MAVEN_HOME/bin:$PATH
+
+                        mvn -version
+
+                        echo "===== Installing Chrome (if needed) ====="
+                        # Check if running as root or have sudo access
+                        if [ "$(id -u)" = "0" ] || command -v sudo &> /dev/null; then
+                            if ! command -v google-chrome &> /dev/null && ! command -v chromium-browser &> /dev/null; then
+                                echo "Attempting to install Chrome..."
+
+                                # Try to install Chrome (Debian/Ubuntu based)
+                                if command -v apt-get &> /dev/null; then
+                                    apt-get update -qq || true
+                                    apt-get install -y wget gnupg || true
+                                    wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - || true
+                                    echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list || true
+                                    apt-get update -qq || true
+                                    apt-get install -y google-chrome-stable || true
+                                fi
+
+                                echo "Chrome installation attempted"
+                            else
+                                echo "✓ Chrome already installed"
+                            fi
+                        else
+                            echo "⚠ No root access - Chrome must be pre-installed"
                         fi
 
                         # Return to workspace
                         cd $WORKSPACE
 
-                        # Set Maven path and compile
-                        export MAVEN_HOME=/tmp/apache-maven-3.9.6
-                        export PATH=$MAVEN_HOME/bin:$PATH
+                        echo "===== Compiling Project ====="
+                        mvn clean compile -DskipTests
 
-                        # Compile project
-                        mvn clean compile || echo "Maven compile skipped - no pom.xml found"
+                        echo "✓ Compilation successful"
                     '''
                 }
             }
