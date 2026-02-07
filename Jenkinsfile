@@ -225,6 +225,35 @@ pipeline {
                         export DISPLAY=:99
                         echo "Display set to: $DISPLAY"
 
+                        echo "===== Creating Chrome Wrapper for Headless Mode ====="
+                        if [ "$(id -u)" = "0" ]; then
+                            # Backup original chrome binary
+                            if [ ! -f /usr/bin/google-chrome.real ]; then
+                                mv /usr/bin/google-chrome /usr/bin/google-chrome.real
+                            fi
+
+                            # Create wrapper script that forces headless mode
+                            cat > /usr/bin/google-chrome << 'CHROME_WRAPPER_EOF'
+#!/bin/bash
+# Chrome wrapper to force headless mode in Docker
+/usr/bin/google-chrome.real \
+  --headless \
+  --no-sandbox \
+  --disable-dev-shm-usage \
+  --disable-gpu \
+  --disable-software-rasterizer \
+  --disable-extensions \
+  --disable-background-networking \
+  --remote-debugging-port=9222 \
+  "$@"
+CHROME_WRAPPER_EOF
+
+                            chmod +x /usr/bin/google-chrome
+                            echo "✓ Chrome wrapper created - Chrome will run in headless mode"
+                        else
+                            echo "⚠ Not root - cannot create Chrome wrapper"
+                        fi
+
                         # Return to workspace
                         cd $WORKSPACE
 
