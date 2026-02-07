@@ -287,8 +287,17 @@ CHROME_WRAPPER_EOF
 
                         # Verify changes
                         echo "===== Verifying Changes ====="
-                        grep -n "ChromeOptions" src/User/AddingCourseTest.java | head -5
-                        grep -n "ChromeOptions" src/Admin/StudentManagementTest.java | head -5
+                        echo "AddingCourseTest.java changes:"
+                        grep -B2 -A2 "ChromeOptions" src/User/AddingCourseTest.java || echo "ERROR: ChromeOptions not found!"
+
+                        echo ""
+                        echo "StudentManagementTest.java changes:"
+                        grep -B2 -A2 "ChromeOptions" src/Admin/StudentManagementTest.java || echo "ERROR: ChromeOptions not found!"
+
+                        echo ""
+                        echo "Checking driver initialization:"
+                        grep "new ChromeDriver" src/User/AddingCourseTest.java
+                        grep "new ChromeDriver" src/Admin/StudentManagementTest.java
 
                         echo "===== Compiling Project ====="
                         mvn clean compile -DskipTests
