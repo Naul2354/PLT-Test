@@ -10,6 +10,8 @@ pipeline {
         // Use system Java and Maven
         JAVA_HOME = '/opt/java/openjdk'
         PATH = "${JAVA_HOME}/bin:${env.PATH}"
+        // Set display for Xvfb
+        DISPLAY = ':99'
     }
 
     parameters {
@@ -201,6 +203,27 @@ pipeline {
                             google-chrome --version || chromium-browser --version || echo "Chrome not found!"
                             chromedriver --version || echo "ChromeDriver not found!"
                         fi
+
+                        echo "===== Setting up Xvfb (Virtual Display) ====="
+                        # Start Xvfb if not running
+                        if ! pgrep -x Xvfb > /dev/null; then
+                            if [ "$(id -u)" = "0" ]; then
+                                echo "Starting Xvfb..."
+                                # Install Xvfb if needed
+                                apt-get install -y xvfb || true
+                                # Start Xvfb in background
+                                Xvfb :99 -ac -screen 0 1920x1080x24 > /dev/null 2>&1 &
+                                sleep 2
+                                echo "✓ Xvfb started on display :99"
+                            else
+                                echo "⚠ Not root - cannot start Xvfb"
+                            fi
+                        else
+                            echo "✓ Xvfb already running"
+                        fi
+
+                        export DISPLAY=:99
+                        echo "Display set to: $DISPLAY"
 
                         # Return to workspace
                         cd $WORKSPACE
