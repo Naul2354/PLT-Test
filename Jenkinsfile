@@ -177,7 +177,7 @@ pipeline {
                             google-chrome --version
 
                             # Install ChromeDriver
-                            CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+' | head -1)
+                            CHROME_VERSION=$(google-chrome --version | awk '{print $3}')
                             CHROME_MAJOR=$(echo $CHROME_VERSION | cut -d. -f1)
                             echo "Chrome version: $CHROME_VERSION (major: $CHROME_MAJOR)"
 
