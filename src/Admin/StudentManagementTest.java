@@ -15,7 +15,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -268,11 +267,9 @@ public class StudentManagementTest {
 
         StudentInfo student = generateRandomStudent();
 
-        // Initialize browser with Docker-safe options
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage");
-        driver = new ChromeDriver(options);
+        driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        driver.manage().window().maximize();
 
         try {
             loginAsAdmin();
