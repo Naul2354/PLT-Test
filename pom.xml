@@ -36,12 +36,11 @@
             <version>${selenium.version}</version>
         </dependency>
 
-        <!-- TestNG -->
+        <!-- TestNG - no scope restriction since tests are in src/ -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
-            <scope>test</scope>
         </dependency>
 
         <!-- Apache Commons CSV (for reading CSV files) -->
