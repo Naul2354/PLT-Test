@@ -155,28 +155,51 @@ pipeline {
 
                         mvn -version
 
-                        echo "===== Installing Chrome (if needed) ====="
-                        # Check if running as root or have sudo access
-                        if [ "$(id -u)" = "0" ] || command -v sudo &> /dev/null; then
-                            if ! command -v google-chrome &> /dev/null && ! command -v chromium-browser &> /dev/null; then
-                                echo "Attempting to install Chrome..."
+                        echo "===== Installing Chrome & ChromeDriver ====="
 
-                                # Try to install Chrome (Debian/Ubuntu based)
-                                if command -v apt-get &> /dev/null; then
-                                    apt-get update -qq || true
-                                    apt-get install -y wget gnupg || true
-                                    wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - || true
-                                    echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list || true
-                                    apt-get update -qq || true
-                                    apt-get install -y google-chrome-stable || true
-                                fi
+                        # Install Chrome using apt-get as root
+                        if [ "$(id -u)" = "0" ]; then
+                            echo "Running as root - installing Chrome..."
 
-                                echo "Chrome installation attempted"
-                            else
-                                echo "✓ Chrome already installed"
-                            fi
+                            # Install dependencies
+                            apt-get update -qq
+                            apt-get install -y wget gnupg unzip
+
+                            # Add Chrome repository
+                            wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+                            echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list
+
+                            # Install Chrome
+                            apt-get update -qq
+                            apt-get install -y google-chrome-stable
+
+                            # Verify Chrome installation
+                            google-chrome --version
+
+                            # Install ChromeDriver
+                            CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+' | head -1)
+                            CHROME_MAJOR=$(echo $CHROME_VERSION | cut -d. -f1)
+                            echo "Chrome version: $CHROME_VERSION (major: $CHROME_MAJOR)"
+
+                            # Download ChromeDriver
+                            CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_MAJOR")
+                            echo "Downloading ChromeDriver version: $CHROMEDRIVER_VERSION"
+
+                            cd /tmp
+                            wget -q "https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip"
+                            unzip -o chromedriver_linux64.zip
+                            chmod +x chromedriver
+                            mv chromedriver /usr/local/bin/
+
+                            # Verify ChromeDriver
+                            chromedriver --version
+
+                            echo "✓ Chrome and ChromeDriver installed successfully"
                         else
-                            echo "⚠ No root access - Chrome must be pre-installed"
+                            echo "⚠ Not running as root - Chrome must be pre-installed"
+                            echo "Checking if Chrome is available..."
+                            google-chrome --version || chromium-browser --version || echo "Chrome not found!"
+                            chromedriver --version || echo "ChromeDriver not found!"
                         fi
 
                         # Return to workspace
