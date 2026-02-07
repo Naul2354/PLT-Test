@@ -408,11 +408,51 @@ CHROME_WRAPPER_EOF
                     archiveArtifacts artifacts: '**/target/surefire-reports/**/*',
                                      allowEmptyArchive: true
 
+                    // Archive TestNG HTML reports
+                    archiveArtifacts artifacts: '**/test-output/**/*',
+                                     allowEmptyArchive: true
+
                     // Archive screenshots if any
                     archiveArtifacts artifacts: '**/screenshots/**/*.png',
                                      allowEmptyArchive: true
 
+                    // Create summary
+                    sh '''
+                        echo "===== Test Summary ====="
+                        echo "Test Reports Location: target/surefire-reports/"
+                        echo "TestNG Reports: test-output/"
+
+                        if [ -d "target/surefire-reports" ]; then
+                            echo ""
+                            echo "Test Results:"
+                            find target/surefire-reports -name "*.xml" -exec basename {} \\; || true
+                        fi
+
+                        if [ -d "test-output" ]; then
+                            echo ""
+                            echo "TestNG HTML Report generated"
+                            ls -lh test-output/index.html || true
+                        fi
+                    '''
+
                     echo 'Test reports aggregated successfully'
+                }
+            }
+        }
+
+        stage('Publish HTML Report') {
+            steps {
+                echo 'Publishing TestNG HTML Report...'
+                script {
+                    publishHTML([
+                        allowMissing: true,
+                        alwaysLinkToLastBuild: true,
+                        keepAll: true,
+                        reportDir: 'test-output',
+                        reportFiles: 'index.html',
+                        reportName: 'TestNG HTML Report',
+                        reportTitles: 'Test Results'
+                    ])
                 }
             }
         }
