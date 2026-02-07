@@ -258,30 +258,37 @@ CHROME_WRAPPER_EOF
                         cd $WORKSPACE
 
                         echo "===== Injecting Chrome Options for Jenkins ====="
-                        # Modify test files to add ChromeOptions for headless mode
-                        # This only happens in Jenkins - local code stays unchanged!
 
                         # For AddingCourseTest.java
-                        if [ -f "src/User/AddingCourseTest.java" ]; then
-                            echo "Modifying AddingCourseTest.java..."
-                            # Add import for ChromeOptions
-                            sed -i '/import org.openqa.selenium.chrome.ChromeDriver;/a import org.openqa.selenium.chrome.ChromeOptions;' src/User/AddingCourseTest.java
+                        echo "Modifying AddingCourseTest.java..."
 
-                            # Replace driver initialization
-                            sed -i 's/driver = new ChromeDriver();/ChromeOptions options = new ChromeOptions();\n        options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage");\n        driver = new ChromeDriver(options);/' src/User/AddingCourseTest.java
-                        fi
+                        # Step 1: Add import
+                        sed -i '/import org.openqa.selenium.chrome.ChromeDriver;/a\\import org.openqa.selenium.chrome.ChromeOptions;' src/User/AddingCourseTest.java
+
+                        # Step 2: Replace driver initialization (line by line)
+                        sed -i '/driver = new ChromeDriver();/i\\        ChromeOptions options = new ChromeOptions();' src/User/AddingCourseTest.java
+                        sed -i '/driver = new ChromeDriver();/i\\        options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage");' src/User/AddingCourseTest.java
+                        sed -i 's/driver = new ChromeDriver();/driver = new ChromeDriver(options);/' src/User/AddingCourseTest.java
+
+                        echo "✓ AddingCourseTest.java modified"
 
                         # For StudentManagementTest.java
-                        if [ -f "src/Admin/StudentManagementTest.java" ]; then
-                            echo "Modifying StudentManagementTest.java..."
-                            # Add import for ChromeOptions
-                            sed -i '/import org.openqa.selenium.chrome.ChromeDriver;/a import org.openqa.selenium.chrome.ChromeOptions;' src/Admin/StudentManagementTest.java
+                        echo "Modifying StudentManagementTest.java..."
 
-                            # Replace driver initialization
-                            sed -i 's/driver = new ChromeDriver();/ChromeOptions options = new ChromeOptions();\n        options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage");\n        driver = new ChromeDriver(options);/' src/Admin/StudentManagementTest.java
-                        fi
+                        # Step 1: Add import
+                        sed -i '/import org.openqa.selenium.chrome.ChromeDriver;/a\\import org.openqa.selenium.chrome.ChromeOptions;' src/Admin/StudentManagementTest.java
 
-                        echo "✓ Chrome options injected for Jenkins build only"
+                        # Step 2: Replace driver initialization (line by line)
+                        sed -i '/driver = new ChromeDriver();/i\\        ChromeOptions options = new ChromeOptions();' src/Admin/StudentManagementTest.java
+                        sed -i '/driver = new ChromeDriver();/i\\        options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage");' src/Admin/StudentManagementTest.java
+                        sed -i 's/driver = new ChromeDriver();/driver = new ChromeDriver(options);/' src/Admin/StudentManagementTest.java
+
+                        echo "✓ StudentManagementTest.java modified"
+
+                        # Verify changes
+                        echo "===== Verifying Changes ====="
+                        grep -n "ChromeOptions" src/User/AddingCourseTest.java | head -5
+                        grep -n "ChromeOptions" src/Admin/StudentManagementTest.java | head -5
 
                         echo "===== Compiling Project ====="
                         mvn clean compile -DskipTests
