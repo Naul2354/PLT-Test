@@ -1,0 +1,53 @@
+=== LOG KIỂM TRA KHÓA HỌC LẬP TRÌNH WEB ===
+
+[PASS] CHAPTER = Chương 1: HTML cơ bản
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[PASS] CHAPTER = Chương 2: CSS và thiết kế giao diện
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[PASS] CHAPTER = Chương 3: JavaScript căn bản
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[PASS] CHAPTER = Chương 4: JavaScript nâng cao
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[PASS] CHAPTER = Chương 5: Responsive Website
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[PASS] CHAPTER = Chương 6: Dự án mini Website cá nhân
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+
+=== FILE DIFFERENCES ===
+Missing in compare.txt (24 items): [tongquanvewebsitevainternet, bocucvoiflexbox, phantichyeucauduan, fetchapi, nguyenlyresponsive, gioithieucss, responsivevoimediaquery, domcoban, gioithieuhtml, gioithieujavascript, mausacvafontchu, cacthevanbanvahinhanh, formvanhaplieu, gridlayout, mangvaobject, danhsachvabang, xaydungchucnang, vonglapvaieukien, bienvakieudulieu, hamvasukien, mediaquerynangcao, xulysukiennangcao, thietkegiaodien, kiemthuvahoanthien]
+
+=== SUMMARY ===
+Total FAILED items = 36
+
+java.lang.AssertionError: There are failed validations. Check console log. expected [0] but found [36]
+    at tests.user.CourseExpandTest.testExpandCourseAndVerify(CourseExpandTest.java)

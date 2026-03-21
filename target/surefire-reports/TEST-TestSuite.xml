@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="TestSuite" time="65.11" tests="3" errors="0" skipped="0" failures="1">
+  <properties>
+    <property name="java.specification.version" value="17"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/home/bulma/eclipse-workspace/POL_Test/target/test-classes:/home/bulma/eclipse-workspace/POL_Test/target/classes:/home/bulma/.m2/repository/org/seleniumhq/selenium/selenium-java/4.16.1/selenium-java-4.16.1.jar:/home/bulma/.m2/repository/org/seleniumhq/selenium/selenium-api/4.16.1/selenium-api-4.16.1.jar:/home/bulma/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v118/4.16.1/selenium-devtools-v118-4.16.1.jar:/home/bulma/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v119/4.16.1/selenium-devtools-v119-4.16.1.jar:/home/bulma/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v120/4.16.1/selenium-devtools-v120-4.16.1.jar:/home/bulma/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v85/4.16.1/selenium-devtools-v85-4.16.1.jar:/home/bulma/.m2/repository/org/seleniumhq/selenium/selenium-edge-driver/4.16.1/selenium-edge-driver-4.16.1.jar:/home/bulma/.m2/repository/org/seleniumhq/selenium/selenium-firefox-driver/4.16.1/selenium-firefox-driver-4.16.1.jar:/home/bulma/.m2/repository/org/seleniumhq/selenium/selenium-http/4.16.1/selenium-http-4.16.1.jar:/home/bulma/.m2/repository/dev/failsafe/failsafe/3.3.2/failsafe-3.3.2.jar:/home/bulma/.m2/repository/org/seleniumhq/selenium/selenium-ie-driver/4.16.1/selenium-ie-driver-4.16.1.jar:/home/bulma/.m2/repository/org/seleniumhq/selenium/selenium-remote-driver/4.16.1/selenium-remote-driver-4.16.1.jar:/home/bulma/.m2/repository/com/google/guava/guava/32.1.2-jre/guava-32.1.2-jre.jar:/home/bulma/.m2/repository/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar:/home/bulma/.m2/repository/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar:/home/bulma/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/home/bulma/.m2/repository/org/checkerframework/checker-qual/3.33.0/checker-qual-3.33.0.jar:/home/bulma/.m2/repository/com/google/errorprone/error_prone_annotations/2.18.0/error_prone_annotations-2.18.0.jar:/home/bulma/.m2/repository/com/google/j2objc/j2objc-annotations/2.8/j2objc-annotations-2.8.jar:/home/bulma/.m2/repository/io/opentelemetry/opentelemetry-api/1.28.0/opentelemetry-api-1.28.0.jar:/home/bulma/.m2/repository/io/opentelemetry/opentelemetry-context/1.28.0/opentelemetry-context-1.28.0.jar:/home/bulma/.m2/repository/io/opentelemetry/opentelemetry-exporter-logging/1.28.0/opentelemetry-exporter-logging-1.28.0.jar:/home/bulma/.m2/repository/io/opentelemetry/opentelemetry-sdk-metrics/1.28.0/opentelemetry-sdk-metrics-1.28.0.jar:/home/bulma/.m2/repository/io/opentelemetry/opentelemetry-extension-incubator/1.28.0-alpha/opentelemetry-extension-incubator-1.28.0-alpha.jar:/home/bulma/.m2/repository/io/opentelemetry/opentelemetry-sdk-logs/1.28.0/opentelemetry-sdk-logs-1.28.0.jar:/home/bulma/.m2/repository/io/opentelemetry/opentelemetry-sdk-common/1.28.0/opentelemetry-sdk-common-1.28.0.jar:/home/bulma/.m2/repository/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/1.28.0/opentelemetry-sdk-extension-autoconfigure-spi-1.28.0.jar:/home/bulma/.m2/repository/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure/1.28.0/opentelemetry-sdk-extension-autoconfigure-1.28.0.jar:/home/bulma/.m2/repository/io/opentelemetry/opentelemetry-api-events/1.28.0-alpha/opentelemetry-api-events-1.28.0-alpha.jar:/home/bulma/.m2/repository/io/opentelemetry/opentelemetry-sdk-trace/1.28.0/opentelemetry-sdk-trace-1.28.0.jar:/home/bulma/.m2/repository/io/opentelemetry/opentelemetry-sdk/1.28.0/opentelemetry-sdk-1.28.0.jar:/home/bulma/.m2/repository/io/opentelemetry/opentelemetry-semconv/1.28.0-alpha/opentelemetry-semconv-1.28.0-alpha.jar:/home/bulma/.m2/repository/net/bytebuddy/byte-buddy/1.14.5/byte-buddy-1.14.5.jar:/home/bulma/.m2/repository/org/seleniumhq/selenium/selenium-os/4.16.1/selenium-os-4.16.1.jar:/home/bulma/.m2/repository/org/apache/commons/commons-exec/1.3/commons-exec-1.3.jar:/home/bulma/.m2/repository/org/seleniumhq/selenium/selenium-safari-driver/4.16.1/selenium-safari-driver-4.16.1.jar:/home/bulma/.m2/repository/org/seleniumhq/selenium/selenium-support/4.16.1/selenium-support-4.16.1.jar:/home/bulma/.m2/repository/org/seleniumhq/selenium/selenium-chrome-driver/4.16.1/selenium-chrome-driver-4.16.1.jar:/home/bulma/.m2/repository/com/google/auto/service/auto-service-annotations/1.1.1/auto-service-annotations-1.1.1.jar:/home/bulma/.m2/repository/org/seleniumhq/selenium/selenium-chromium-driver/4.16.1/selenium-chromium-driver-4.16.1.jar:/home/bulma/.m2/repository/org/seleniumhq/selenium/selenium-json/4.16.1/selenium-json-4.16.1.jar:/home/bulma/.m2/repository/org/seleniumhq/selenium/selenium-manager/4.16.1/selenium-manager-4.16.1.jar:/home/bulma/.m2/repository/org/testng/testng/7.9.0/testng-7.9.0.jar:/home/bulma/.m2/repository/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar:/home/bulma/.m2/repository/com/beust/jcommander/1.82/jcommander-1.82.jar:/home/bulma/.m2/repository/org/webjars/jquery/3.7.1/jquery-3.7.1.jar:/home/bulma/.m2/repository/org/apache/commons/commons-csv/1.10.0/commons-csv-1.10.0.jar:/home/bulma/.m2/repository/com/googlecode/json-simple/json-simple/1.1.1/json-simple-1.1.1.jar:/home/bulma/.m2/repository/junit/junit/4.10/junit-4.10.jar:/home/bulma/.m2/repository/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar:/home/bulma/.m2/repository/org/json/json/20231013/json-20231013.jar:/home/bulma/.m2/repository/io/github/bonigarcia/webdrivermanager/5.6.3/webdrivermanager-5.6.3.jar:/home/bulma/.m2/repository/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar:/home/bulma/.m2/repository/com/github/docker-java/docker-java/3.3.4/docker-java-3.3.4.jar:/home/bulma/.m2/repository/com/github/docker-java/docker-java-core/3.3.4/docker-java-core-3.3.4.jar:/home/bulma/.m2/repository/com/github/docker-java/docker-java-api/3.3.4/docker-java-api-3.3.4.jar:/home/bulma/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.10.3/jackson-annotations-2.10.3.jar:/home/bulma/.m2/repository/commons-io/commons-io/2.13.0/commons-io-2.13.0.jar:/home/bulma/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.10.3/jackson-databind-2.10.3.jar:/home/bulma/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.10.3/jackson-core-2.10.3.jar:/home/bulma/.m2/repository/org/bouncycastle/bcpkix-jdk18on/1.76/bcpkix-jdk18on-1.76.jar:/home/bulma/.m2/repository/org/bouncycastle/bcprov-jdk18on/1.76/bcprov-jdk18on-1.76.jar:/home/bulma/.m2/repository/org/bouncycastle/bcutil-jdk18on/1.76/bcutil-jdk18on-1.76.jar:/home/bulma/.m2/repository/org/slf4j/jcl-over-slf4j/1.7.30/jcl-over-slf4j-1.7.30.jar:/home/bulma/.m2/repository/com/github/docker-java/docker-java-transport-httpclient5/3.3.4/docker-java-transport-httpclient5-3.3.4.jar:/home/bulma/.m2/repository/com/github/docker-java/docker-java-transport/3.3.4/docker-java-transport-3.3.4.jar:/home/bulma/.m2/repository/net/java/dev/jna/jna/5.13.0/jna-5.13.0.jar:/home/bulma/.m2/repository/org/brotli/dec/0.1.2/dec-0.1.2.jar:/home/bulma/.m2/repository/org/apache/commons/commons-lang3/3.14.0/commons-lang3-3.14.0.jar:/home/bulma/.m2/repository/org/apache/commons/commons-compress/1.25.0/commons-compress-1.25.0.jar:/home/bulma/.m2/repository/org/apache/httpcomponents/client5/httpclient5/5.2.1/httpclient5-5.2.1.jar:/home/bulma/.m2/repository/org/apache/httpcomponents/core5/httpcore5/5.2/httpcore5-5.2.jar:/home/bulma/.m2/repository/org/apache/httpcomponents/core5/httpcore5-h2/5.2/httpcore5-h2-5.2.jar:"/>
+    <property name="java.vm.vendor" value="Ubuntu"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://ubuntu.com/"/>
+    <property name="user.timezone" value="Asia/Bangkok"/>
+    <property name="os.name" value="Linux"/>
+    <property name="java.vm.specification.version" value="17"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-17-openjdk-amd64/lib"/>
+    <property name="sun.java.command" value="/home/bulma/eclipse-workspace/POL_Test/target/surefire/surefirebooter-20260320095544100_3.jar /home/bulma/eclipse-workspace/POL_Test/target/surefire 2026-03-20T09-55-43_886-jvmRun1 surefire-20260320095544100_1tmp surefire_0-20260320095544100_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/home/bulma/eclipse-workspace/POL_Test/target/test-classes:/home/bulma/eclipse-workspace/POL_Test/target/classes:/home/bulma/.m2/repository/org/seleniumhq/selenium/selenium-java/4.16.1/selenium-java-4.16.1.jar:/home/bulma/.m2/repository/org/seleniumhq/selenium/selenium-api/4.16.1/selenium-api-4.16.1.jar:/home/bulma/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v118/4.16.1/selenium-devtools-v118-4.16.1.jar:/home/bulma/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v119/4.16.1/selenium-devtools-v119-4.16.1.jar:/home/bulma/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v120/4.16.1/selenium-devtools-v120-4.16.1.jar:/home/bulma/.m2/repository/org/seleniumhq/selenium/selenium-devtools-v85/4.16.1/selenium-devtools-v85-4.16.1.jar:/home/bulma/.m2/repository/org/seleniumhq/selenium/selenium-edge-driver/4.16.1/selenium-edge-driver-4.16.1.jar:/home/bulma/.m2/repository/org/seleniumhq/selenium/selenium-firefox-driver/4.16.1/selenium-firefox-driver-4.16.1.jar:/home/bulma/.m2/repository/org/seleniumhq/selenium/selenium-http/4.16.1/selenium-http-4.16.1.jar:/home/bulma/.m2/repository/dev/failsafe/failsafe/3.3.2/failsafe-3.3.2.jar:/home/bulma/.m2/repository/org/seleniumhq/selenium/selenium-ie-driver/4.16.1/selenium-ie-driver-4.16.1.jar:/home/bulma/.m2/repository/org/seleniumhq/selenium/selenium-remote-driver/4.16.1/selenium-remote-driver-4.16.1.jar:/home/bulma/.m2/repository/com/google/guava/guava/32.1.2-jre/guava-32.1.2-jre.jar:/home/bulma/.m2/repository/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar:/home/bulma/.m2/repository/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar:/home/bulma/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/home/bulma/.m2/repository/org/checkerframework/checker-qual/3.33.0/checker-qual-3.33.0.jar:/home/bulma/.m2/repository/com/google/errorprone/error_prone_annotations/2.18.0/error_prone_annotations-2.18.0.jar:/home/bulma/.m2/repository/com/google/j2objc/j2objc-annotations/2.8/j2objc-annotations-2.8.jar:/home/bulma/.m2/repository/io/opentelemetry/opentelemetry-api/1.28.0/opentelemetry-api-1.28.0.jar:/home/bulma/.m2/repository/io/opentelemetry/opentelemetry-context/1.28.0/opentelemetry-context-1.28.0.jar:/home/bulma/.m2/repository/io/opentelemetry/opentelemetry-exporter-logging/1.28.0/opentelemetry-exporter-logging-1.28.0.jar:/home/bulma/.m2/repository/io/opentelemetry/opentelemetry-sdk-metrics/1.28.0/opentelemetry-sdk-metrics-1.28.0.jar:/home/bulma/.m2/repository/io/opentelemetry/opentelemetry-extension-incubator/1.28.0-alpha/opentelemetry-extension-incubator-1.28.0-alpha.jar:/home/bulma/.m2/repository/io/opentelemetry/opentelemetry-sdk-logs/1.28.0/opentelemetry-sdk-logs-1.28.0.jar:/home/bulma/.m2/repository/io/opentelemetry/opentelemetry-sdk-common/1.28.0/opentelemetry-sdk-common-1.28.0.jar:/home/bulma/.m2/repository/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/1.28.0/opentelemetry-sdk-extension-autoconfigure-spi-1.28.0.jar:/home/bulma/.m2/repository/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure/1.28.0/opentelemetry-sdk-extension-autoconfigure-1.28.0.jar:/home/bulma/.m2/repository/io/opentelemetry/opentelemetry-api-events/1.28.0-alpha/opentelemetry-api-events-1.28.0-alpha.jar:/home/bulma/.m2/repository/io/opentelemetry/opentelemetry-sdk-trace/1.28.0/opentelemetry-sdk-trace-1.28.0.jar:/home/bulma/.m2/repository/io/opentelemetry/opentelemetry-sdk/1.28.0/opentelemetry-sdk-1.28.0.jar:/home/bulma/.m2/repository/io/opentelemetry/opentelemetry-semconv/1.28.0-alpha/opentelemetry-semconv-1.28.0-alpha.jar:/home/bulma/.m2/repository/net/bytebuddy/byte-buddy/1.14.5/byte-buddy-1.14.5.jar:/home/bulma/.m2/repository/org/seleniumhq/selenium/selenium-os/4.16.1/selenium-os-4.16.1.jar:/home/bulma/.m2/repository/org/apache/commons/commons-exec/1.3/commons-exec-1.3.jar:/home/bulma/.m2/repository/org/seleniumhq/selenium/selenium-safari-driver/4.16.1/selenium-safari-driver-4.16.1.jar:/home/bulma/.m2/repository/org/seleniumhq/selenium/selenium-support/4.16.1/selenium-support-4.16.1.jar:/home/bulma/.m2/repository/org/seleniumhq/selenium/selenium-chrome-driver/4.16.1/selenium-chrome-driver-4.16.1.jar:/home/bulma/.m2/repository/com/google/auto/service/auto-service-annotations/1.1.1/auto-service-annotations-1.1.1.jar:/home/bulma/.m2/repository/org/seleniumhq/selenium/selenium-chromium-driver/4.16.1/selenium-chromium-driver-4.16.1.jar:/home/bulma/.m2/repository/org/seleniumhq/selenium/selenium-json/4.16.1/selenium-json-4.16.1.jar:/home/bulma/.m2/repository/org/seleniumhq/selenium/selenium-manager/4.16.1/selenium-manager-4.16.1.jar:/home/bulma/.m2/repository/org/testng/testng/7.9.0/testng-7.9.0.jar:/home/bulma/.m2/repository/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar:/home/bulma/.m2/repository/com/beust/jcommander/1.82/jcommander-1.82.jar:/home/bulma/.m2/repository/org/webjars/jquery/3.7.1/jquery-3.7.1.jar:/home/bulma/.m2/repository/org/apache/commons/commons-csv/1.10.0/commons-csv-1.10.0.jar:/home/bulma/.m2/repository/com/googlecode/json-simple/json-simple/1.1.1/json-simple-1.1.1.jar:/home/bulma/.m2/repository/junit/junit/4.10/junit-4.10.jar:/home/bulma/.m2/repository/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar:/home/bulma/.m2/repository/org/json/json/20231013/json-20231013.jar:/home/bulma/.m2/repository/io/github/bonigarcia/webdrivermanager/5.6.3/webdrivermanager-5.6.3.jar:/home/bulma/.m2/repository/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar:/home/bulma/.m2/repository/com/github/docker-java/docker-java/3.3.4/docker-java-3.3.4.jar:/home/bulma/.m2/repository/com/github/docker-java/docker-java-core/3.3.4/docker-java-core-3.3.4.jar:/home/bulma/.m2/repository/com/github/docker-java/docker-java-api/3.3.4/docker-java-api-3.3.4.jar:/home/bulma/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.10.3/jackson-annotations-2.10.3.jar:/home/bulma/.m2/repository/commons-io/commons-io/2.13.0/commons-io-2.13.0.jar:/home/bulma/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.10.3/jackson-databind-2.10.3.jar:/home/bulma/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.10.3/jackson-core-2.10.3.jar:/home/bulma/.m2/repository/org/bouncycastle/bcpkix-jdk18on/1.76/bcpkix-jdk18on-1.76.jar:/home/bulma/.m2/repository/org/bouncycastle/bcprov-jdk18on/1.76/bcprov-jdk18on-1.76.jar:/home/bulma/.m2/repository/org/bouncycastle/bcutil-jdk18on/1.76/bcutil-jdk18on-1.76.jar:/home/bulma/.m2/repository/org/slf4j/jcl-over-slf4j/1.7.30/jcl-over-slf4j-1.7.30.jar:/home/bulma/.m2/repository/com/github/docker-java/docker-java-transport-httpclient5/3.3.4/docker-java-transport-httpclient5-3.3.4.jar:/home/bulma/.m2/repository/com/github/docker-java/docker-java-transport/3.3.4/docker-java-transport-3.3.4.jar:/home/bulma/.m2/repository/net/java/dev/jna/jna/5.13.0/jna-5.13.0.jar:/home/bulma/.m2/repository/org/brotli/dec/0.1.2/dec-0.1.2.jar:/home/bulma/.m2/repository/org/apache/commons/commons-lang3/3.14.0/commons-lang3-3.14.0.jar:/home/bulma/.m2/repository/org/apache/commons/commons-compress/1.25.0/commons-compress-1.25.0.jar:/home/bulma/.m2/repository/org/apache/httpcomponents/client5/httpclient5/5.2.1/httpclient5-5.2.1.jar:/home/bulma/.m2/repository/org/apache/httpcomponents/core5/httpcore5/5.2/httpcore5-5.2.jar:/home/bulma/.m2/repository/org/apache/httpcomponents/core5/httpcore5-h2/5.2/httpcore5-h2-5.2.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/home/bulma"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2026-01-20"/>
+    <property name="java.home" value="/usr/lib/jvm/java-17-openjdk-amd64"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/home/bulma/eclipse-workspace/POL_Test"/>
+    <property name="java.vm.compressedOopsMode" value="32-bit"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="/home/bulma/eclipse-workspace/POL_Test/target/surefire/surefirebooter-20260320095544100_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="17.0.18+8-Ubuntu-125.10.1"/>
+    <property name="user.name" value="bulma"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="6.17.0-19-generic"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="localRepository" value="/home/bulma/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://bugs.launchpad.net/ubuntu/+source/openjdk-17"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="java.version" value="17.0.18"/>
+    <property name="user.dir" value="/home/bulma/eclipse-workspace/POL_Test"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.vendor" value="Ubuntu"/>
+    <property name="java.vm.version" value="17.0.18+8-Ubuntu-125.10.1"/>
+    <property name="java.specification.maintenance.version" value="1"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="61.0"/>
+  </properties>
+  <testcase name="testStudentManagementCRUDWorkflow" classname="tests.admin.StudentManagementTest" time="13.772">
+    <system-out><![CDATA[========================================
+TEST: Student Management CRUD
+========================================
+
+Loading CSV data...
+CSV data loaded
+
+Generated student:
+  Name: Thái Trung Tuấn
+  Code: SV46795
+  Email: tuan.sv46795@yahoo.com
+  Phone: 0323165853
+Logging in as test.pltsolutions@gmail.com...
+Login successful
+
+=== Adding Student ===
+Clicked Add
+OK clicked
+Student added
+
+Verifying student data...
+All fields verified
+
+=== Editing Student ===
+Changing address to: 451 Phạm Văn Đồng, Phường 8, TP.HCM
+Clicked Edit
+OK clicked
+Student edited
+Address verified
+
+=== Deleting Student ===
+Clicked Delete
+OK clicked
+Student deleted
+
+========================================
+TEST PASSED
+========================================
+]]></system-out>
+    <system-err><![CDATA[SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+Mar 20, 2026 9:55:46 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 144
+Mar 20, 2026 9:55:46 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 144.0.7559.109. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.16.1` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+]]></system-err>
+  </testcase>
+  <testcase name="testExpandCourseAndVerify" classname="tests.user.CourseExpandTest" time="11.772">
+    <failure message="There are failed validations. Please check log file. expected [0] but found [36]" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: There are failed validations. Please check log file. expected [0] but found [36]
+	at org.testng.Assert.fail(Assert.java:111)
+	at org.testng.Assert.failNotEquals(Assert.java:1578)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:150)
+	at org.testng.Assert.assertEquals(Assert.java:132)
+	at org.testng.Assert.assertEquals(Assert.java:1419)
+	at org.testng.Assert.assertEquals(Assert.java:1383)
+	at tests.user.CourseExpandTest.testExpandCourseAndVerify(CourseExpandTest.java:44)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:228)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:961)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:201)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.testng.internal.thread.graph.TestNGFutureTask.run(TestNGFutureTask.java:22)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+]]></failure>
+    <system-out><![CDATA[START TEST
+Logging in as test1.pltsolutions@gmail.com...
+========================================
+TEST: Adding Course Content
+========================================
+
+Loaded 3 chapters from JSON
+Loaded 6 lessons from JSON
+Selected chapter: Hàm và Phạm vi
+Selected 2 lessons
+
+Logging in as test.pltsolutions@gmail.com...
+Login successful
+Navigating to course management...
+Login successful
+Opening course...
+Selecting random course...
+Getting all chapters...
+Opening chapter 1: Chương 1: HTML cơ bản
+Selected: Lập trình Java cơ bản
+  Getting lessons...
+    Lesson: 
+    Lesson: 
+    Lesson: 
+    Lesson: 
+    Lesson: 
+    Lesson: 
+    Lesson: 
+    Lesson: 
+    Lesson: 
+Opening chapter 2: Chương 2: CSS và thiết kế giao diện
+  Getting lessons...
+    Lesson: 
+    Lesson: 
+    Lesson: 
+    Lesson: 
+    Lesson: 
+    Lesson: 
+    Lesson: 
+    Lesson: 
+Opening chapter 3: Chương 3: JavaScript căn bản
+Opening course content tab...
+  Getting lessons...
+    Lesson: 
+    Lesson: 
+    Lesson: 
+    Lesson: 
+    Lesson: 
+    Lesson: 
+    Lesson: 
+    Lesson: 
+Opening chapter 4: Chương 4: JavaScript nâng cao
+  Getting lessons...
+    Lesson: 
+    Lesson: 
+    Lesson: 
+    Lesson: 
+Opening chapter 5: Chương 5: Responsive Website
+
+Adding chapter: Hàm và Phạm vi
+  Getting lessons...
+    Lesson: 
+    Lesson: 
+    Lesson: 
+Opening chapter 6: Chương 6: Dự án mini Website cá nhân
+  Getting lessons...
+    Lesson: 
+    Lesson: 
+    Lesson: 
+    Lesson: 
+Compare file created: /home/bulma/eclipse-workspace/POL_Test/test-reports/compare.txt
+Loading expected data from: /home/bulma/eclipse-workspace/POL_Test/src/resources/data.txt
+Total expected items = 30
+
+=== DETAILED COMPARISON RESULTS ===
+[PASS] CHAPTER = Chương 1: HTML cơ bản
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[PASS] CHAPTER = Chương 2: CSS và thiết kế giao diện
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[PASS] CHAPTER = Chương 3: JavaScript căn bản
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[PASS] CHAPTER = Chương 4: JavaScript nâng cao
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[PASS] CHAPTER = Chương 5: Responsive Website
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[PASS] CHAPTER = Chương 6: Dự án mini Website cá nhân
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+[FAIL] LESSON = 
+Comparing files:
+  Actual (compare): /home/bulma/eclipse-workspace/POL_Test/test-reports/compare.txt
+  Expected (data): /home/bulma/eclipse-workspace/POL_Test/src/resources/data.txt
+Missing in compare.txt (24 items): [tongquanvewebsitevainternet, bocucvoiflexbox, phantichyeucauduan, fetchapi, nguyenlyresponsive, gioithieucss, responsivevoimediaquery, domcoban, gioithieuhtml, gioithieujavascript, mausacvafontchu, cacthevanbanvahinhanh, formvanhaplieu, gridlayout, mangvaobject, danhsachvabang, xaydungchucnang, vonglapvaieukien, bienvakieudulieu, hamvasukien, mediaquerynangcao, xulysukiennangcao, thietkegiaodien, kiemthuvahoanthien]
+Total FAILED items = 36
+]]></system-out>
+    <system-err><![CDATA[Mar 20, 2026 9:56:01 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 144
+Mar 20, 2026 9:56:01 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 144.0.7559.109. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.16.1` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Mar 20, 2026 9:56:01 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 144
+Mar 20, 2026 9:56:01 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 144.0.7559.109. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.16.1` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+]]></system-err>
+  </testcase>
+  <testcase name="testAddingCourseContent" classname="tests.user.AddingCourseTest" time="47.43">
+    <system-out><![CDATA[Chapter form filled
+Adding lesson 1: Cài đặt môi trường phát triển
+Lesson form filled
+Adding lesson 2: Chương trình Hello World đầu tiên
+Lesson form filled
+
+Collapsing all panels...
+
+Saving chapter...
+Save successful!
+
+Verifying chapter exists...
+Chapter verified: Hàm và Phạm vi
+Verifying lessons exist...
+Lesson verified: Cài đặt môi trường phát triển
+Lesson verified: Chương trình Hello World đầu tiên
+
+========================================
+TEST PASSED
+========================================
+Course: Lập trình Java cơ bản
+Chapter added: Hàm và Phạm vi
+Lessons added: 2
+========================================
+
+]]></system-out>
+  </testcase>
+</testsuite>

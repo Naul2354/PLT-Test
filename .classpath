@@ -10,6 +10,7 @@
 	<classpathentry kind="lib" path="lib/testng.jar"/>
 	<classpathentry kind="lib" path="lib/jcommander.jar"/>
 	<classpathentry kind="lib" path="lib/json-simple.jar"/>
+	<classpathentry kind="lib" path="lib/json.jar"/>
 	<classpathentry kind="lib" path="lib/commons-csv.jar"/>
 	<classpathentry kind="lib" path="lib/commons-io.jar"/>
 	<classpathentry kind="lib" path="lib/commons-codec.jar"/>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="3" passed="2" failed="1" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-03-20T09:55:44 ICT" name="POL Test Suite" finished-at="2026-03-20T09:56:49 ICT" duration-ms="64619">
+    <groups>
+    </groups>
+    <test started-at="2026-03-20T09:55:44 ICT" name="Admin Tests" finished-at="2026-03-20T09:56:00 ICT" duration-ms="15780">
+      <class name="tests.admin.StudentManagementTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:tests.admin.StudentManagementTest@78e94dcf]" started-at="2026-03-20T09:55:44 ICT" name="setUp" finished-at="2026-03-20T09:55:46 ICT" duration-ms="1885" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testStudentManagementCRUDWorkflow()[pri:0, instance:tests.admin.StudentManagementTest@78e94dcf]" started-at="2026-03-20T09:55:46 ICT" name="testStudentManagementCRUDWorkflow" finished-at="2026-03-20T09:56:00 ICT" duration-ms="13771" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testStudentManagementCRUDWorkflow -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.admin.StudentManagementTest@78e94dcf]" started-at="2026-03-20T09:56:00 ICT" name="tearDown" finished-at="2026-03-20T09:56:00 ICT" duration-ms="85" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- tests.admin.StudentManagementTest -->
+    </test> <!-- Admin Tests -->
+    <test started-at="2026-03-20T09:56:00 ICT" name="User Tests" finished-at="2026-03-20T09:56:49 ICT" duration-ms="48685">
+      <class name="tests.user.CourseExpandTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:tests.user.CourseExpandTest@363ee3a2]" started-at="2026-03-20T09:56:00 ICT" name="setUp" finished-at="2026-03-20T09:56:01 ICT" duration-ms="1136" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testExpandCourseAndVerify()[pri:0, instance:tests.user.CourseExpandTest@363ee3a2]" started-at="2026-03-20T09:56:01 ICT" name="testExpandCourseAndVerify" finished-at="2026-03-20T09:56:13 ICT" duration-ms="11797" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[There are failed validations. Please check log file. expected [0] but found [36]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: There are failed validations. Please check log file. expected [0] but found [36]
+at org.testng.Assert.fail(Assert.java:111)
+at org.testng.Assert.failNotEquals(Assert.java:1578)
+at org.testng.Assert.assertEqualsImpl(Assert.java:150)
+at org.testng.Assert.assertEquals(Assert.java:132)
+at org.testng.Assert.assertEquals(Assert.java:1419)
+at org.testng.Assert.assertEquals(Assert.java:1383)
+at tests.user.CourseExpandTest.testExpandCourseAndVerify(CourseExpandTest.java:44)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:228)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:961)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:201)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+at org.testng.internal.thread.graph.TestNGFutureTask.run(TestNGFutureTask.java:22)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+at java.base/java.lang.Thread.run(Thread.java:840)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testExpandCourseAndVerify -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.user.CourseExpandTest@363ee3a2]" started-at="2026-03-20T09:56:13 ICT" name="tearDown" finished-at="2026-03-20T09:56:13 ICT" duration-ms="75" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- tests.user.CourseExpandTest -->
+      <class name="tests.user.AddingCourseTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:tests.user.AddingCourseTest@4386f16]" started-at="2026-03-20T09:56:00 ICT" name="setUp" finished-at="2026-03-20T09:56:01 ICT" duration-ms="1160" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testAddingCourseContent()[pri:0, instance:tests.user.AddingCourseTest@4386f16]" started-at="2026-03-20T09:56:01 ICT" name="testAddingCourseContent" finished-at="2026-03-20T09:56:49 ICT" duration-ms="47437" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testAddingCourseContent -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.user.AddingCourseTest@4386f16]" started-at="2026-03-20T09:56:49 ICT" name="tearDown" finished-at="2026-03-20T09:56:49 ICT" duration-ms="82" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- tests.user.AddingCourseTest -->
+    </test> <!-- User Tests -->
+  </suite> <!-- POL Test Suite -->
+</testng-results>

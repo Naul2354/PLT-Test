@@ -3,11 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Admin.StudentManagementTest">
+      <class name="tests.user.HomeworkTest">
         <methods>
-          <include name="testStudentManagementCRUDWorkflow"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="testAddHomeworkWithAllQuestionTypes"/>
         </methods>
-      </class> <!-- Admin.StudentManagementTest -->
+      </class> <!-- tests.user.HomeworkTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

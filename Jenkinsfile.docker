@@ -1,0 +1,104 @@
+pipeline {
+    agent {
+        docker {
+            image 'selenium/standalone-chrome:latest'
+            args '-v /var/run/docker.sock:/var/run/docker.sock --user root'
+        }
+    }
+
+    parameters {
+        string(
+            name: 'GIT_BRANCH',
+            defaultValue: 'main',
+            description: 'Git branch to checkout'
+        )
+        booleanParam(
+            name: 'RUN_STUDENT_MANAGEMENT',
+            defaultValue: true,
+            description: 'Run Student Management Test'
+        )
+        booleanParam(
+            name: 'RUN_ADDING_COURSE',
+            defaultValue: true,
+            description: 'Run Adding Course Test'
+        )
+    }
+
+    environment {
+        MAVEN_HOME = '/opt/maven'
+        PATH = "${MAVEN_HOME}/bin:${env.PATH}"
+    }
+
+    stages {
+        stage('Checkout Code from Git') {
+            steps {
+                script {
+                    echo '========================================='
+                    echo 'STAGE: Checkout Code from Git'
+                    echo '========================================='
+
+                    checkout([
+                        $class: 'GitSCM',
+                        branches: [[name: "*/${params.GIT_BRANCH}"]],
+                        extensions: [[$class: 'CleanBeforeCheckout']],
+                        userRemoteConfigs: [[
+                            url: 'https://github.com/Naul2354/PLT-Test.git'
+                        ]]
+                    ])
+
+                    sh 'ls -la'
+                }
+            }
+        }
+
+        stage('Install Maven') {
+            steps {
+                sh '''
+                    apt-get update
+                    apt-get install -y maven
+                    mvn -version
+                '''
+            }
+        }
+
+        stage('Compile') {
+            steps {
+                sh 'mvn clean compile'
+            }
+        }
+
+        stage('Run Tests in Parallel') {
+            parallel {
+                stage('Student Management Test') {
+                    when {
+                        expression { params.RUN_STUDENT_MANAGEMENT == true }
+                    }
+                    steps {
+                        sh 'mvn test -Dtest=Admin.StudentManagementTest'
+                    }
+                }
+
+                stage('Adding Course Test') {
+                    when {
+                        expression { params.RUN_ADDING_COURSE == true }
+                    }
+                    steps {
+                        sh 'mvn test -Dtest=User.AddingCourseTest'
+                    }
+                }
+            }
+        }
+
+        stage('Publish Reports') {
+            steps {
+                junit '**/target/surefire-reports/*.xml'
+            }
+        }
+    }
+
+    post {
+        always {
+            cleanWs()
+        }
+    }
+}

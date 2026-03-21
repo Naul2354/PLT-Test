@@ -1,0 +1,66 @@
+{
+  "homeworkName": "Bài tập kiểm tra Selenium",
+  "questions": [
+    {
+      "type": "default",
+      "content": "HTML là viết tắt của từ nào?",
+      "answers": [
+        "HyperText Markup Language",
+        "High Tech Modern Language",
+        "HyperTool Multi Language",
+        "Home Text Markup Level"
+      ],
+      "correctAnswers": [0]
+    },
+    {
+      "type": "default",
+      "content": "CSS dùng để làm gì?",
+      "answers": [
+        "Lập trình logic",
+        "Định dạng giao diện website",
+        "Quản lý cơ sở dữ liệu",
+        "Xử lý phía server"
+      ],
+      "correctAnswers": [1]
+    },
+    {
+      "type": "audio",
+      "content": "Nghe đoạn âm thanh và chọn đáp án đúng",
+      "answers": [
+        "JavaScript",
+        "TypeScript",
+        "CoffeeScript",
+        "ActionScript"
+      ],
+      "correctAnswers": [0, 1]
+    },
+    {
+      "type": "image",
+      "content": "Nhìn hình ảnh và chọn đáp án phù hợp",
+      "answers": [
+        "Flexbox Layout",
+        "Grid Layout",
+        "Float Layout",
+        "Table Layout"
+      ],
+      "correctAnswers": [0]
+    },
+    {
+      "type": "video",
+      "content": "Xem video và trả lời câu hỏi",
+      "videoId": "dQw4w9WgXcQ",
+      "answers": [
+        "React",
+        "Vue",
+        "Angular",
+        "Svelte"
+      ],
+      "correctAnswers": [0, 2]
+    },
+    {
+      "type": "essay",
+      "content": "Giải thích sự khác nhau giữa var, let và const trong JavaScript",
+      "charLimit": 500
+    }
+  ]
+}
