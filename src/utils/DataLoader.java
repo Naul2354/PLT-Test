@@ -1,6 +1,7 @@
 package utils;
 
 import models.ChapterData;
+import models.CourseData;
 import models.HomeworkData;
 import models.LessonData;
 import models.QuestionData;
@@ -120,6 +121,87 @@ public class DataLoader {
         return (1 + rand.nextInt(500)) + " " +
                 streets.get(rand.nextInt(streets.size())) + ", " +
                 districts.get(rand.nextInt(districts.size())) + ", TP.HCM";
+    }
+
+    public static List<CourseData> loadCoursesFromJSON() throws Exception {
+        List<CourseData> courses = new ArrayList<>();
+        String filePath = System.getProperty("user.dir") + "/src/resources/courses.json";
+
+        JSONParser parser = new JSONParser();
+        JSONArray jsonArray = (JSONArray) parser.parse(new FileReader(filePath));
+
+        for (Object obj : jsonArray) {
+            JSONObject jsonObj = (JSONObject) obj;
+
+            List<String> learners = new ArrayList<>();
+            JSONArray learnersArr = (JSONArray) jsonObj.get("learners");
+            if (learnersArr != null) {
+                for (Object l : learnersArr) {
+                    learners.add((String) l);
+                }
+            }
+
+            CourseData course = new CourseData(
+                (String) jsonObj.get("title"),
+                (String) jsonObj.get("description"),
+                learners
+            );
+
+            // Parse update data
+            course.updatedTitle = (String) jsonObj.get("updatedTitle");
+            course.updatedDescription = (String) jsonObj.get("updatedDescription");
+
+            // Parse chapters with lessons
+            JSONArray chaptersArr = (JSONArray) jsonObj.get("chapters");
+            if (chaptersArr != null) {
+                course.chapters = new ArrayList<>();
+                for (Object chObj : chaptersArr) {
+                    JSONObject chJson = (JSONObject) chObj;
+                    ChapterData chapter = new ChapterData(
+                        (String) chJson.get("title"),
+                        (String) chJson.get("description")
+                    );
+
+                    JSONArray lessonsArr = (JSONArray) chJson.get("lessons");
+                    if (lessonsArr != null) {
+                        chapter.lessons = new ArrayList<>();
+                        for (Object lObj : lessonsArr) {
+                            JSONObject lJson = (JSONObject) lObj;
+                            LessonData lesson = new LessonData(
+                                (String) lJson.get("title"),
+                                (String) lJson.get("description")
+                            );
+                            lesson.materialType = (String) lJson.get("materialType");
+                            lesson.materialName = (String) lJson.get("materialName");
+                            lesson.materialUrl = (String) lJson.get("materialUrl");
+                            chapter.lessons.add(lesson);
+                        }
+                    }
+
+                    course.chapters.add(chapter);
+                }
+            }
+
+            // Parse forum data
+            JSONObject forumObj = (JSONObject) jsonObj.get("forum");
+            if (forumObj != null) {
+                course.forumName = (String) forumObj.get("name");
+                course.forumDescription = (String) forumObj.get("description");
+            }
+
+            // Parse video conference data
+            JSONObject vcObj = (JSONObject) jsonObj.get("videoConference");
+            if (vcObj != null) {
+                course.videoConferenceYoutubeLink = (String) vcObj.get("youtubeLink");
+                course.videoConferenceDescription = (String) vcObj.get("description");
+                course.videoConferenceMeetingLink = (String) vcObj.get("meetingLink");
+            }
+
+            courses.add(course);
+        }
+
+        System.out.println("Loaded " + courses.size() + " courses from JSON");
+        return courses;
     }
 
     public static List<ChapterData> loadChaptersFromJSON() throws Exception {

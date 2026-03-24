@@ -19,8 +19,8 @@ public class HomeworkManagementPage {
     private final SeleniumHelper helper;
 
     // File paths for uploads
-    private static final String IMAGE_FILE = "/home/bulma/cursor.png";
-    private static final String AUDIO_FILE = "/home/bulma/file_test_selenium_test.mp4";
+    private static final String IMAGE_FILE = System.getProperty("user.dir") + "/src/image/js.jpg";
+    private static final String AUDIO_FILE = System.getProperty("user.dir") + "/src/image/file_test_selenium_test.mp4";
 
     // Locators
     private static final By BTN_THEM_MOI =

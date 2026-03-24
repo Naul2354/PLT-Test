@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StudentManagementPage {
@@ -48,6 +49,46 @@ public class StudentManagementPage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(NAV_STUDENT_MGMT));
         driver.findElement(NAV_STUDENT_MGMT).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(STUDENT_LIST_HEADER));
+    }
+
+    public List<String[]> getStudentListAndPrint() {
+        System.out.println("\n========================================");
+        System.out.println("  STUDENT LIST - Dữ liệu thực tế từ UI");
+        System.out.println("========================================");
+        System.out.println(String.format("%-12s %-15s %-10s %-14s %-35s %-12s %-6s %-20s %-12s",
+            "Mã HV", "Họ đệm", "Tên", "SĐT", "Email", "Ngày sinh", "GT", "Địa chỉ", "Cập nhật"));
+        System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------------");
+
+        helper.delay(2000);
+
+        List<String[]> students = new ArrayList<>();
+        List<WebElement> rows = driver.findElements(By.xpath("//table//tbody//tr"));
+
+        for (WebElement row : rows) {
+            List<WebElement> cells = row.findElements(By.tagName("td"));
+            if (cells.size() >= 8) {
+                String code = cells.get(0).getText().trim();
+                String middleName = cells.get(1).getText().trim();
+                String firstName = cells.get(2).getText().trim();
+                String phone = cells.get(3).getText().trim();
+                String email = cells.get(4).getText().trim();
+                String dob = cells.get(5).getText().trim();
+                String gender = cells.get(6).getText().trim();
+                String address = cells.get(7).getText().trim();
+                String updated = cells.size() > 8 ? cells.get(8).getText().trim() : "";
+
+                System.out.println(String.format("%-12s %-15s %-10s %-14s %-35s %-12s %-6s %-20s %-12s",
+                    code, middleName, firstName, phone, email, dob, gender, address, updated));
+
+                students.add(new String[]{code, email});
+            }
+        }
+
+        System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("Total students: " + students.size());
+        System.out.println("========================================\n");
+
+        return students;
     }
 
     public void searchStudent(String text) {

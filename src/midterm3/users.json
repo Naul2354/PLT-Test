@@ -1,9 +1,0 @@
-[
-  {"name": "Nguyen Van An", "email": "nguyenvanan@gmail.com", "password": "pass1235678"},
-  {"name": "Tran Thi Bich", "email": "tranthibich@gmail.com", "password": "pass456222"},
-  {"name": "Le Hoang Nam", "email": "lehoangnam@gmail.com", "password": "pass789111"},
-  {"name": "Pham Thi Lan", "email": "phamthilan@gmail.com", "password": "pass3212213"},
-  {"name": "Hoang Van Duc", "email": "hoangvanduc@gmail.com", "password": "pass654213"},
-  {"name": "Vo Thi Mai", "email": "vothimai@gmail.com", "password": "pass982127"},
-  {"name": "Dang Quoc Huy", "email": "dangquochuy@gmail.com", "password": "pass234111"}
-]

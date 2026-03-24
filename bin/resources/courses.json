@@ -1,0 +1,338 @@
+[
+  {
+    "title": "Lập trình Ruby on Rails",
+    "description": "Khóa học xây dựng ứng dụng web với Ruby on Rails, bao gồm MVC, ActiveRecord, RESTful API và deployment.",
+    "updatedTitle": "Ruby on Rails nâng cao",
+    "updatedDescription": "Khóa học nâng cao về Ruby on Rails, tập trung vào API design, performance tuning, caching và deployment với Docker.",
+    "learners": ["an.sv10001@gmail.com", "linh.sv10002@outlook.com", "tuan.sv10003@yahoo.com", "mai.sv10004@gmail.com"],
+    "chapters": [
+      {
+        "title": "Giới thiệu Ruby on Rails",
+        "description": "Tổng quan về framework Rails, cài đặt môi trường và cấu trúc dự án MVC.",
+        "lessons": [
+          {
+            "title": "Cài đặt Ruby và Rails",
+            "description": "Hướng dẫn cài đặt Ruby, RVM và Rails trên các hệ điều hành.",
+            "materialType": "video",
+            "materialName": "Video hướng dẫn cài đặt Ruby",
+            "materialUrl": "https://www.youtube.com/watch?v=NQ0qG2AS_1c"
+          },
+          {
+            "title": "Tạo dự án Rails đầu tiên",
+            "description": "Sử dụng rails new để tạo project và tìm hiểu cấu trúc thư mục.",
+            "materialType": "attachment",
+            "materialName": "Tài liệu hướng dẫn Rails"
+          }
+        ]
+      },
+      {
+        "title": "ActiveRecord và Database",
+        "description": "Học cách làm việc với cơ sở dữ liệu thông qua ActiveRecord ORM.",
+        "lessons": [
+          {
+            "title": "Migration và Schema",
+            "description": "Tạo và quản lý database schema với Rails migrations.",
+            "materialType": "video",
+            "materialName": "Video ActiveRecord Migration",
+            "materialUrl": "https://www.youtube.com/watch?v=NQ0qG2AS_1c"
+          },
+          {
+            "title": "Query Interface",
+            "description": "Sử dụng ActiveRecord query methods để truy vấn dữ liệu.",
+            "materialType": "attachment",
+            "materialName": "Cheat sheet ActiveRecord Query"
+          }
+        ]
+      }
+    ],
+    "forum": {
+      "name": "Thảo luận Ruby on Rails",
+      "description": "Diễn đàn dành cho học viên trao đổi về Rails, hỏi đáp và chia sẻ kinh nghiệm phát triển web."
+    },
+    "videoConference": {
+      "youtubeLink": "https://www.youtube.com/watch?v=NQ0qG2AS_1c",
+      "description": "Buổi học trực tuyến về Ruby OOP và Rails Framework",
+      "meetingLink": "https://meet.google.com/abc-defg-hij"
+    }
+  },
+  {
+    "title": "Lập trình Golang nâng cao",
+    "description": "Khóa học về ngôn ngữ Go, bao gồm Goroutines, Channels, Concurrency Patterns và xây dựng Microservices.",
+    "updatedTitle": "Golang Microservices Architecture",
+    "updatedDescription": "Khóa học chuyên sâu về xây dựng Microservices với Go, bao gồm gRPC, Kubernetes, Service Mesh và Observability.",
+    "learners": ["an.sv10001@gmail.com", "linh.sv10002@outlook.com", "tuan.sv10003@yahoo.com"],
+    "chapters": [
+      {
+        "title": "Go Concurrency cơ bản",
+        "description": "Tìm hiểu về Goroutines, Channels và WaitGroup trong Go.",
+        "lessons": [
+          {
+            "title": "Goroutines và Channels",
+            "description": "Học cách sử dụng goroutines và channels để xử lý concurrent.",
+            "materialType": "video",
+            "materialName": "Video Go Concurrency Patterns",
+            "materialUrl": "https://www.youtube.com/watch?v=NQ0qG2AS_1c"
+          },
+          {
+            "title": "Select và Mutex",
+            "description": "Sử dụng select statement và sync.Mutex để đồng bộ dữ liệu.",
+            "materialType": "attachment",
+            "materialName": "Tài liệu Go Concurrency"
+          }
+        ]
+      },
+      {
+        "title": "Xây dựng REST API với Go",
+        "description": "Sử dụng Gin framework để xây dựng RESTful API và middleware.",
+        "lessons": [
+          {
+            "title": "Gin Router và Handlers",
+            "description": "Tạo routes, handlers và middleware với Gin framework.",
+            "materialType": "video",
+            "materialName": "Video Go Gin Framework",
+            "materialUrl": "https://www.youtube.com/watch?v=NQ0qG2AS_1c"
+          },
+          {
+            "title": "JSON Serialization",
+            "description": "Xử lý JSON encoding/decoding và struct tags trong Go.",
+            "materialType": "attachment",
+            "materialName": "Go REST API Cheat Sheet"
+          }
+        ]
+      }
+    ],
+    "forum": {
+      "name": "Thảo luận Golang",
+      "description": "Diễn đàn trao đổi về Go, thảo luận bài tập concurrency và dự án microservices."
+    },
+    "videoConference": {
+      "youtubeLink": "https://www.youtube.com/watch?v=NQ0qG2AS_1c",
+      "description": "Buổi học trực tuyến về Go Concurrency và gRPC",
+      "meetingLink": "https://meet.google.com/xyz-abcd-efg"
+    }
+  },
+  {
+    "title": "Phát triển ứng dụng Kotlin",
+    "description": "Khóa học lập trình Kotlin cho Android, bao gồm Jetpack Compose, Coroutines, MVVM Architecture và Room Database.",
+    "updatedTitle": "Kotlin Multiplatform Development",
+    "updatedDescription": "Khóa học mở rộng Kotlin cho đa nền tảng, bao gồm KMM, Compose Multiplatform và chia sẻ code giữa Android/iOS.",
+    "learners": ["linh.sv10002@outlook.com", "mai.sv10004@gmail.com", "tuan.sv10003@yahoo.com"],
+    "chapters": [
+      {
+        "title": "Kotlin cơ bản",
+        "description": "Cú pháp Kotlin, null safety, data classes và extension functions.",
+        "lessons": [
+          {
+            "title": "Null Safety và Smart Casts",
+            "description": "Hiểu về nullable types, safe calls và smart casting trong Kotlin.",
+            "materialType": "video",
+            "materialName": "Video Kotlin Null Safety",
+            "materialUrl": "https://www.youtube.com/watch?v=NQ0qG2AS_1c"
+          },
+          {
+            "title": "Data Classes và Sealed Classes",
+            "description": "Sử dụng data class, sealed class và enum trong Kotlin.",
+            "materialType": "attachment",
+            "materialName": "Kotlin Cheat Sheet"
+          }
+        ]
+      },
+      {
+        "title": "Jetpack Compose UI",
+        "description": "Xây dựng giao diện Android hiện đại với Jetpack Compose.",
+        "lessons": [
+          {
+            "title": "Composable Functions",
+            "description": "Tạo UI components với @Composable annotation.",
+            "materialType": "video",
+            "materialName": "Video Compose Tutorial",
+            "materialUrl": "https://www.youtube.com/watch?v=NQ0qG2AS_1c"
+          },
+          {
+            "title": "State Management",
+            "description": "Quản lý state với remember, mutableStateOf và ViewModel.",
+            "materialType": "attachment",
+            "materialName": "Compose State Guide"
+          }
+        ]
+      }
+    ],
+    "forum": {
+      "name": "Thảo luận Kotlin Android",
+      "description": "Diễn đàn thảo luận về Kotlin, chia sẻ kinh nghiệm phát triển ứng dụng Android."
+    },
+    "videoConference": {
+      "youtubeLink": "https://www.youtube.com/watch?v=NQ0qG2AS_1c",
+      "description": "Buổi học trực tuyến về Kotlin Coroutines và Jetpack Compose",
+      "meetingLink": "https://meet.google.com/qwe-rtyui-ops"
+    }
+  },
+  {
+    "title": "Lập trình Rust Systems",
+    "description": "Khóa học về Rust cho lập trình hệ thống, bao gồm Ownership, Borrowing, Lifetimes và unsafe Rust.",
+    "updatedTitle": "Rust Embedded Systems",
+    "updatedDescription": "Khóa học Rust cho lập trình nhúng và IoT, bao gồm no_std, embedded-hal, RTOS integration và bare-metal programming.",
+    "learners": ["an.sv10001@gmail.com", "mai.sv10004@gmail.com", "tuan.sv10003@yahoo.com", "linh.sv10002@outlook.com"],
+    "chapters": [
+      {
+        "title": "Ownership và Borrowing",
+        "description": "Hiểu về hệ thống ownership, borrowing rules và lifetimes trong Rust.",
+        "lessons": [
+          {
+            "title": "Move Semantics",
+            "description": "Tìm hiểu về move, copy và clone trong Rust ownership model.",
+            "materialType": "video",
+            "materialName": "Video Rust Ownership",
+            "materialUrl": "https://www.youtube.com/watch?v=NQ0qG2AS_1c"
+          },
+          {
+            "title": "References và Lifetimes",
+            "description": "Sử dụng references, mutable borrows và lifetime annotations.",
+            "materialType": "attachment",
+            "materialName": "Rust Ownership Diagram"
+          }
+        ]
+      },
+      {
+        "title": "Error Handling và Traits",
+        "description": "Xử lý lỗi với Result, Option và tạo custom traits trong Rust.",
+        "lessons": [
+          {
+            "title": "Result và Option Types",
+            "description": "Sử dụng Result<T,E> và Option<T> để xử lý lỗi an toàn.",
+            "materialType": "video",
+            "materialName": "Video Rust Error Handling",
+            "materialUrl": "https://www.youtube.com/watch?v=NQ0qG2AS_1c"
+          },
+          {
+            "title": "Custom Traits và Generics",
+            "description": "Định nghĩa traits, implement cho structs và sử dụng generics.",
+            "materialType": "attachment",
+            "materialName": "Rust Traits Reference"
+          }
+        ]
+      }
+    ],
+    "forum": {
+      "name": "Thảo luận Rust Programming",
+      "description": "Diễn đàn trao đổi về Rust, memory safety và systems programming."
+    },
+    "videoConference": {
+      "youtubeLink": "https://www.youtube.com/watch?v=NQ0qG2AS_1c",
+      "description": "Buổi học trực tuyến về Rust Ownership và Smart Pointers",
+      "meetingLink": "https://meet.google.com/rst-uvwx-yz1"
+    }
+  },
+  {
+    "title": "Swift iOS Development",
+    "description": "Khóa học phát triển ứng dụng iOS với Swift, bao gồm SwiftUI, Combine, Core Data và App Store deployment.",
+    "updatedTitle": "Swift Full-Stack Development",
+    "updatedDescription": "Khóa học Swift toàn diện bao gồm iOS frontend với SwiftUI, backend với Vapor và server-side Swift.",
+    "learners": ["an.sv10001@gmail.com", "linh.sv10002@outlook.com", "mai.sv10004@gmail.com"],
+    "chapters": [
+      {
+        "title": "SwiftUI Fundamentals",
+        "description": "Xây dựng giao diện iOS với SwiftUI declarative syntax.",
+        "lessons": [
+          {
+            "title": "Views và Modifiers",
+            "description": "Tạo custom views và áp dụng modifiers trong SwiftUI.",
+            "materialType": "video",
+            "materialName": "Video SwiftUI Views",
+            "materialUrl": "https://www.youtube.com/watch?v=NQ0qG2AS_1c"
+          },
+          {
+            "title": "Navigation và Lists",
+            "description": "Sử dụng NavigationStack, List và LazyVStack.",
+            "materialType": "attachment",
+            "materialName": "SwiftUI Navigation Guide"
+          }
+        ]
+      },
+      {
+        "title": "Combine và Networking",
+        "description": "Reactive programming với Combine framework và URLSession.",
+        "lessons": [
+          {
+            "title": "Publishers và Subscribers",
+            "description": "Tạo data streams với Publishers và xử lý với Subscribers.",
+            "materialType": "video",
+            "materialName": "Video Swift Combine",
+            "materialUrl": "https://www.youtube.com/watch?v=NQ0qG2AS_1c"
+          },
+          {
+            "title": "API Calls với URLSession",
+            "description": "Gọi REST API, decode JSON và xử lý errors với Combine.",
+            "materialType": "attachment",
+            "materialName": "Swift Networking Guide"
+          }
+        ]
+      }
+    ],
+    "forum": {
+      "name": "Thảo luận Swift iOS",
+      "description": "Diễn đàn thảo luận về Swift và phát triển ứng dụng iOS, chia sẻ tips và tricks."
+    },
+    "videoConference": {
+      "youtubeLink": "https://www.youtube.com/watch?v=NQ0qG2AS_1c",
+      "description": "Buổi học trực tuyến về SwiftUI và Combine Framework",
+      "meetingLink": "https://meet.google.com/swf-ios2-dev"
+    }
+  },
+  {
+    "title": "Scala Functional Programming",
+    "description": "Khóa học lập trình hàm với Scala, bao gồm Pattern Matching, Monads, Akka Actors và Apache Spark.",
+    "updatedTitle": "Scala Big Data Engineering",
+    "updatedDescription": "Khóa học Scala cho Data Engineering, bao gồm Apache Spark, Kafka Streams, Delta Lake và data pipeline design.",
+    "learners": ["tuan.sv10003@yahoo.com", "mai.sv10004@gmail.com", "an.sv10001@gmail.com"],
+    "chapters": [
+      {
+        "title": "Scala Basics",
+        "description": "Cú pháp Scala, pattern matching, case classes và higher-order functions.",
+        "lessons": [
+          {
+            "title": "Pattern Matching",
+            "description": "Sử dụng match expressions và extractors trong Scala.",
+            "materialType": "video",
+            "materialName": "Video Scala Pattern Matching",
+            "materialUrl": "https://www.youtube.com/watch?v=NQ0qG2AS_1c"
+          },
+          {
+            "title": "Collections và Transformations",
+            "description": "Map, flatMap, filter và fold trên Scala collections.",
+            "materialType": "attachment",
+            "materialName": "Scala Collections Reference"
+          }
+        ]
+      },
+      {
+        "title": "Akka và Concurrency",
+        "description": "Actor model với Akka framework và xử lý concurrent trong Scala.",
+        "lessons": [
+          {
+            "title": "Actor System Basics",
+            "description": "Tạo actors, gửi messages và xử lý với ActorRef.",
+            "materialType": "video",
+            "materialName": "Video Akka Actors",
+            "materialUrl": "https://www.youtube.com/watch?v=NQ0qG2AS_1c"
+          },
+          {
+            "title": "Supervision và Fault Tolerance",
+            "description": "Cấu hình supervision strategies và xử lý failures.",
+            "materialType": "attachment",
+            "materialName": "Akka Supervision Guide"
+          }
+        ]
+      }
+    ],
+    "forum": {
+      "name": "Thảo luận Scala FP",
+      "description": "Diễn đàn trao đổi về lập trình hàm với Scala và big data processing."
+    },
+    "videoConference": {
+      "youtubeLink": "https://www.youtube.com/watch?v=NQ0qG2AS_1c",
+      "description": "Buổi học trực tuyến về Scala Monads và Akka Streams",
+      "meetingLink": "https://meet.google.com/scl-func-prg"
+    }
+  }
+]

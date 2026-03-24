@@ -98,11 +98,12 @@ public class SeleniumHelper {
 
     public void clickOK() {
         try {
-            WebElement ok = wait.until(ExpectedConditions.elementToBeClickable(By.className("swal2-confirm")));
+            WebDriverWait shortWait = new WebDriverWait(driver, java.time.Duration.ofSeconds(3));
+            WebElement ok = shortWait.until(ExpectedConditions.elementToBeClickable(By.className("swal2-confirm")));
             ok.click();
             System.out.println("OK clicked");
         } catch (Exception e) {
-            System.out.println("No OK button found");
+            // No OK popup - continue
         }
     }
 }

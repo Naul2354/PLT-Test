@@ -104,19 +104,4 @@ mvn test -Dtest=tests.user.CourseExpandTest
 - CourseExpandTest logs: `test-reports/CourseExpandTest_ddMMyy_XX.txt`
 
 
-## Screenshots
 
-### Login Page
-
-> URL: https://elearning.plt.pro.vn/dang-nhap?redirect=%2Ftrang-chu
-
-![Login Page](img_1.png)
-
-### Add New Student
-
-![Add Student Form](img.png)
-![Student Added](img_2.png)
-
-### Add New Lessons
-
-![Add Lessons](img_3.png)
