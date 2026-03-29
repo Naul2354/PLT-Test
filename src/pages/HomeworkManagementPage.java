@@ -5,10 +5,12 @@ import utils.SeleniumHelper;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.util.List;
 
@@ -176,6 +178,164 @@ public class HomeworkManagementPage {
         fillCharLimit(question.charLimit);
 
         collapseLastExpandedPanel();
+    }
+
+    // ==================== Reload & Verify ====================
+
+    public void clickReload() {
+        System.out.println("Clicking Tải lại dữ liệu...");
+        WebElement reloadBtn = wait.until(ExpectedConditions.elementToBeClickable(
+            By.xpath("//button[.//i[contains(@class,'mdi-refresh')] and contains(.,'Tải lại dữ liệu')]")));
+        helper.safeClick(reloadBtn);
+        helper.delay(2000);
+        System.out.println("Data reloaded");
+    }
+
+    public void verifyHomeworkInList(String expectedName) {
+        System.out.println("\n--- Verify Homework In List ---");
+
+        // Find the row containing the homework name
+        List<WebElement> rows = driver.findElements(By.xpath("//table//tbody//tr"));
+        System.out.println("Found " + rows.size() + " row(s) in homework list");
+
+        for (WebElement row : rows) {
+            List<WebElement> cells = row.findElements(By.tagName("td"));
+            if (cells.size() >= 5) {
+                String tenDe = cells.get(0).getText().trim();
+                String soCauHoi = cells.get(1).getText().trim();
+                String nguoiTao = cells.get(2).getText().trim();
+                String ngayTao = cells.get(3).getText().trim();
+                String ngayCapNhat = cells.get(4).getText().trim();
+
+                if (tenDe.contains(expectedName)) {
+                    System.out.println("[PASS] Homework found in list:");
+                    System.out.println("  Tên đề      : " + tenDe);
+                    System.out.println("  Số câu hỏi  : " + soCauHoi);
+                    System.out.println("  Người tạo   : " + nguoiTao);
+                    System.out.println("  Ngày tạo    : " + ngayTao);
+                    System.out.println("  Ngày cập nhật: " + ngayCapNhat);
+                    return;
+                }
+            }
+        }
+        Assert.fail("Homework not found in list: " + expectedName);
+    }
+
+    // ==================== Edit (Update) Homework ====================
+
+    public void clickEditHomework(String homeworkName) {
+        System.out.println("Clicking edit for homework: " + homeworkName);
+
+        // Find the row with the homework name, then click the pencil icon
+        WebElement row = wait.until(ExpectedConditions.visibilityOfElementLocated(
+            By.xpath("//table//tr[.//td[contains(.,'" + homeworkName + "')]]")));
+        WebElement pencilBtn = row.findElement(
+            By.xpath(".//a[.//i[contains(@class,'mdi-pencil')]]"));
+        helper.safeClick(pencilBtn);
+        helper.delay(2000);
+
+        // Wait for edit page to load
+        wait.until(ExpectedConditions.visibilityOfElementLocated(
+            By.xpath("//*[contains(text(),'Chỉnh sửa bài tập')]")));
+        System.out.println("Edit page loaded - 'Chỉnh sửa bài tập' visible");
+    }
+
+    public void updateHomeworkName(String newName) {
+        System.out.println("Updating homework name to: " + newName);
+        WebElement input = wait.until(ExpectedConditions.visibilityOfElementLocated(INPUT_TEN_BAI_TAP));
+        input.sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
+        helper.delay(300);
+        input.sendKeys(newName);
+        helper.delay(500);
+    }
+
+    public void updateHomeworkThumbnail() {
+        System.out.println("Updating homework thumbnail...");
+        String newImage = System.getProperty("user.dir") + "/src/image/golang.jpg";
+        WebElement fileInput = wait.until(ExpectedConditions.presenceOfElementLocated(
+            By.cssSelector("input[type='file']")));
+        fileInput.sendKeys(newImage);
+        helper.delay(1000);
+        System.out.println("Thumbnail updated: " + newImage);
+    }
+
+    public void expandQuestionPanel(int questionIndex) {
+        System.out.println("Expanding question " + (questionIndex + 1) + "...");
+        List<WebElement> panels = driver.findElements(
+            By.xpath("//button[contains(@class, 'v-expansion-panel-header')]"));
+
+        if (questionIndex < panels.size()) {
+            WebElement panel = panels.get(questionIndex);
+            String expanded = panel.getAttribute("aria-expanded");
+            if (!"true".equals(expanded)) {
+                helper.safeClick(panel);
+                helper.delay(1000);
+            }
+        }
+    }
+
+    public void collapseQuestionPanel(int questionIndex) {
+        List<WebElement> panels = driver.findElements(
+            By.xpath("//button[contains(@class, 'v-expansion-panel-header')]"));
+
+        if (questionIndex < panels.size()) {
+            WebElement panel = panels.get(questionIndex);
+            String expanded = panel.getAttribute("aria-expanded");
+            if ("true".equals(expanded)) {
+                helper.safeClick(panel);
+                helper.delay(500);
+            }
+        }
+    }
+
+    public void updateQuestionContent(String newContent) {
+        System.out.println("Updating question content to: " + newContent);
+
+        List<WebElement> textareas = driver.findElements(
+            By.xpath("//div[contains(@class, 'v-expansion-panel--active')]//label[contains(text(),'Nội dung câu hỏi')]/ancestor::div[contains(@class,'v-input')]//textarea"));
+
+        if (!textareas.isEmpty()) {
+            WebElement textarea = textareas.get(textareas.size() - 1);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", textarea);
+            helper.delay(200);
+            textarea.sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
+            helper.delay(200);
+            textarea.sendKeys(newContent);
+        } else {
+            List<WebElement> inputs = driver.findElements(
+                By.xpath("//div[contains(@class, 'v-expansion-panel--active')]//label[contains(text(),'Nội dung câu hỏi')]/ancestor::div[contains(@class,'v-input')]//input"));
+            if (!inputs.isEmpty()) {
+                WebElement input = inputs.get(inputs.size() - 1);
+                ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", input);
+                helper.delay(200);
+                input.sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
+                helper.delay(200);
+                input.sendKeys(newContent);
+            }
+        }
+        helper.delay(300);
+    }
+
+    public void updateAnswers(List<String> newAnswers) {
+        if (newAnswers == null || newAnswers.isEmpty()) return;
+
+        System.out.println("Updating " + newAnswers.size() + " answers...");
+
+        List<WebElement> answerInputs = driver.findElements(
+            By.xpath("//div[contains(@class, 'v-expansion-panel--active')]//label[contains(text(),'Câu trả lời')]/ancestor::div[contains(@class,'v-input')]//input"));
+
+        int startIndex = Math.max(0, answerInputs.size() - newAnswers.size());
+
+        for (int i = 0; i < newAnswers.size() && (startIndex + i) < answerInputs.size(); i++) {
+            WebElement input = answerInputs.get(startIndex + i);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", input);
+            helper.delay(200);
+            input.sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
+            helper.delay(200);
+            input.sendKeys(newAnswers.get(i));
+            System.out.println("  Answer " + (i + 1) + ": " + newAnswers.get(i));
+            helper.delay(200);
+        }
     }
 
     // ==================== Save ====================

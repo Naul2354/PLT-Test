@@ -8,6 +8,7 @@ public class StudentInfo {
     public String dob;
     public String address;
     public String gender;
+    public String newAddress;
 
     public StudentInfo(String fullName, String studentCode, String email, String phone,
                        String dob, String address, String gender) {

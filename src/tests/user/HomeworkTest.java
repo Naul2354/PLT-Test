@@ -13,9 +13,9 @@ import org.testng.annotations.Test;
 public class HomeworkTest extends BaseTest {
 
     @Test
-    public void testAddHomeworkWithAllQuestionTypes() throws Exception {
+    public void testAddAndUpdateHomework() throws Exception {
         System.out.println("========================================");
-        System.out.println("TEST: Add Homework with Questions");
+        System.out.println("TEST: Add & Update Homework with Questions");
         System.out.println("========================================\n");
 
         // Load test data
@@ -29,16 +29,13 @@ public class HomeworkTest extends BaseTest {
         loginPage.loginAsAdmin();
         homeworkPage.navigateToHomeworkManagement();
 
-        // Click Add New
+        // ===== PART 1: Add Homework =====
+        System.out.println("\n===== PART 1: Add Homework =====");
+
         homeworkPage.clickAddNew();
-
-        // Input homework name
         homeworkPage.inputHomeworkName(homework.homeworkName);
-
-        // Upload thumbnail
         homeworkPage.uploadHomeworkThumbnail();
 
-        // Add each question by type
         for (int i = 0; i < homework.questions.size(); i++) {
             QuestionData question = homework.questions.get(i);
             System.out.println("\n[Question " + (i + 1) + "/" + homework.questions.size()
@@ -46,14 +43,56 @@ public class HomeworkTest extends BaseTest {
             homeworkPage.addQuestion(question, i);
         }
 
-        // Save
         homeworkPage.clickSave();
 
+        // ===== PART 2: Navigate Back, Reload & Verify =====
+        System.out.println("\n===== PART 2: Reload & Verify Homework =====");
+
+        homeworkPage.navigateToHomeworkManagement();
+        homeworkPage.clickReload();
+        homeworkPage.verifyHomeworkInList(homework.homeworkName);
+
+        // ===== PART 3: Update Homework =====
+        System.out.println("\n===== PART 3: Update Homework =====");
+
+        homeworkPage.clickEditHomework(homework.homeworkName);
+
+        // Update name and thumbnail
+        homeworkPage.updateHomeworkName(homework.updatedHomeworkName);
+        homeworkPage.updateHomeworkThumbnail();
+
+        // Update each question (expand, replace content & answers, collapse)
+        if (homework.updatedQuestions != null) {
+            for (int i = 0; i < homework.updatedQuestions.size(); i++) {
+                QuestionData updatedQ = homework.updatedQuestions.get(i);
+                System.out.println("\n[Updating Question " + (i + 1) + "/" + homework.updatedQuestions.size()
+                                 + "] Type: " + updatedQ.type);
+
+                homeworkPage.expandQuestionPanel(i);
+                homeworkPage.updateQuestionContent(updatedQ.content);
+                homeworkPage.updateAnswers(updatedQ.answers);
+                homeworkPage.collapseQuestionPanel(i);
+            }
+        }
+
+        // Save updated homework
+        homeworkPage.clickSave();
+
+        // ===== PART 4: Verify Updated Homework =====
+        System.out.println("\n===== PART 4: Verify Updated Homework =====");
+
+        homeworkPage.navigateToHomeworkManagement();
+        homeworkPage.clickReload();
+        homeworkPage.verifyHomeworkInList(homework.updatedHomeworkName);
+
+        // ===== SUMMARY =====
         System.out.println("\n========================================");
-        System.out.println("TEST PASSED");
+        System.out.println("ALL TESTS PASSED");
         System.out.println("========================================");
-        System.out.println("Homework: " + homework.homeworkName);
-        System.out.println("Questions added: " + homework.questions.size());
+        System.out.println("Homework added   : " + homework.homeworkName);
+        System.out.println("Questions added  : " + homework.questions.size());
+        System.out.println("Homework updated : " + homework.updatedHomeworkName);
+        System.out.println("Questions updated: " + (homework.updatedQuestions != null ? homework.updatedQuestions.size() : 0));
         System.out.println("========================================\n");
     }
 }

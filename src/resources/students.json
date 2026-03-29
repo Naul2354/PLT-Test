@@ -1,0 +1,52 @@
+[
+  {
+    "fullName": "Nguyễn Văn An",
+    "studentCode": "SV10001",
+    "email": "an.sv10001@gmail.com",
+    "phone": "0912345678",
+    "dob": "01/15/2005",
+    "address": "128 Lê Lợi Phường 1 TP.HCM",
+    "gender": "Nam",
+    "newAddress": "45 Nguyễn Trãi Phường 3 Quận 5 TP.HCM"
+  },
+  {
+    "fullName": "Trần Thị Linh",
+    "studentCode": "SV10002",
+    "email": "linh.sv10002@outlook.com",
+    "phone": "0923456789",
+    "dob": "03/20/2004",
+    "address": "256/5 Nguyễn Huệ Bến Nghé TP.HCM",
+    "gender": "Nữ",
+    "newAddress": "78 Lý Tự Trọng Phường Bến Thành Quận 1 TP.HCM"
+  },
+  {
+    "fullName": "Lê Minh Tuấn",
+    "studentCode": "SV10003",
+    "email": "tuan.sv10003@yahoo.com",
+    "phone": "0934567890",
+    "dob": "07/08/2003",
+    "address": "89/3/7 Trần Hưng Đạo Tân Định TP.HCM",
+    "gender": "Nam",
+    "newAddress": "162 Pasteur Phường 6 Quận 3 TP.HCM"
+  },
+  {
+    "fullName": "Phạm Thị Mai",
+    "studentCode": "SV10004",
+    "email": "mai.sv10004@gmail.com",
+    "phone": "0945678901",
+    "dob": "12/25/2005",
+    "address": "45 Võ Văn Tần Phường 5 TP.HCM",
+    "gender": "Nữ",
+    "newAddress": "200 Cách Mạng Tháng 8 Phường 10 Quận 3 TP.HCM"
+  },
+  {
+    "fullName": "Hoàng Đức Khoa",
+    "studentCode": "SV10005",
+    "email": "khoa.sv10005@hotmail.com",
+    "phone": "0956789012",
+    "dob": "05/10/2004",
+    "address": "312 Hai Bà Trưng Đa Kao TP.HCM",
+    "gender": "Nam",
+    "newAddress": "55 Điện Biên Phủ Phường 15 Bình Thạnh TP.HCM"
+  }
+]

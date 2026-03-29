@@ -62,5 +62,62 @@
       "content": "Giải thích sự khác nhau giữa var, let và const trong JavaScript",
       "charLimit": 500
     }
+  ],
+  "updatedHomeworkName": "Bài tập nâng cao Selenium WebDriver",
+  "updatedQuestions": [
+    {
+      "type": "default",
+      "content": "Thẻ nào dùng để tạo liên kết trong HTML?",
+      "answers": [
+        "<a>",
+        "<link>",
+        "<href>",
+        "<url>"
+      ]
+    },
+    {
+      "type": "default",
+      "content": "Thuộc tính nào dùng để thay đổi màu chữ trong CSS?",
+      "answers": [
+        "font-color",
+        "text-color",
+        "color",
+        "foreground-color"
+      ]
+    },
+    {
+      "type": "audio",
+      "content": "Nghe và cho biết ngôn ngữ lập trình nào được đề cập",
+      "answers": [
+        "Python",
+        "Java",
+        "Go",
+        "Rust"
+      ]
+    },
+    {
+      "type": "image",
+      "content": "Quan sát hình ảnh và chọn framework đúng",
+      "answers": [
+        "Bootstrap",
+        "Tailwind CSS",
+        "Bulma",
+        "Foundation"
+      ]
+    },
+    {
+      "type": "video",
+      "content": "Sau khi xem video, chọn đáp án chính xác",
+      "answers": [
+        "Node.js",
+        "Deno",
+        "Bun",
+        "Express"
+      ]
+    },
+    {
+      "type": "essay",
+      "content": "Trình bày ưu và nhược điểm của TypeScript so với JavaScript"
+    }
   ]
 }

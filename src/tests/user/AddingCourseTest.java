@@ -1,10 +1,10 @@
 package tests.user;
 
 import base.BaseTest;
-import graphql.org.antlr.v4.runtime.atn.SemanticContext.AND;
 import models.ChapterData;
 import models.CourseData;
 import models.LessonData;
+import pages.CourseContentPage;
 import pages.CourseManagementPage;
 import pages.LoginPage;
 import pages.StudentManagementPage;
@@ -38,6 +38,7 @@ public class AddingCourseTest extends BaseTest {
         LoginPage loginPage = new LoginPage(driver, wait);
         StudentManagementPage studentPage = new StudentManagementPage(driver, wait, helper);
         CourseManagementPage coursePage = new CourseManagementPage(driver, wait, helper);
+        CourseContentPage courseContentPage = new CourseContentPage(driver, wait, helper);
 
         // ===== PART 1: Login & Get Student List =====
         System.out.println("\n===== PART 1: Get Student List =====");
@@ -87,6 +88,11 @@ public class AddingCourseTest extends BaseTest {
         for (String learnerEmail : selectedLearners) {
             coursePage.addLearner(learnerEmail);
         }
+
+        // Hardcode add one more learner
+        String hardcodedLearner = "test.pltsolutions@gmail.com";
+        coursePage.addLearner(hardcodedLearner);
+        System.out.println("Hardcoded learner added: " + hardcodedLearner);
 
         // ===== PART 5: Add Course Content (chapters + lessons + materials) =====
         System.out.println("\n===== PART 5: Add Course Content =====");
@@ -144,30 +150,38 @@ public class AddingCourseTest extends BaseTest {
             selectedCourse.videoConferenceMeetingLink
         );
         
-        // ==== PART 8.1 : 
-        access to : Đến trang người dùng 
-        
-        verify course in homepage 
-        click course  will see " Nội dung môn học " 
-        Display 2 chapter : 
-        Chương 1 : ...
-        Expand to see 2 lessons
-        each chapter include chapter AND description , material
-        first lessons have video ytb : verify title of video ytb
-        -> click button ytb will see video ytb -> then click close 
-        second lessons will have link install material 
-        -> check tittle with Json file that right material we up in part 5
- 
-        verify and compare with JSON file
-        Chương 2 : same with chương 1 .
-        
-        
-        
-       
-        	
+        // ===== PART 8: User View - Verify Content, Forum & Video Conference =====
+        System.out.println("\n===== PART 8: User View - Verify Content, Forum & Video Conference =====");
 
-        // ===== PART 8: Search & Update Course =====
-        System.out.println("\n===== PART 8: Search & Update Course =====");
+        // Navigate to user homepage
+        courseContentPage.navigateToUserHomepage();
+
+        // Find and click the course
+        courseContentPage.findAndClickCourse(selectedCourse.title);
+
+        // Verify course content (chapters, lessons, materials)
+        courseContentPage.verifyCourseContent(selectedCourse);
+
+        // Verify forum
+        courseContentPage.clickForumTabUserView();
+        courseContentPage.verifyForumUserView(selectedCourse.forumName, selectedCourse.forumDescription);
+
+        // Add a random comment and send
+        String randomComment = "Test comment " + System.currentTimeMillis();
+        courseContentPage.addForumComment(randomComment);
+
+        // Verify video conference
+        courseContentPage.clickVideoConferenceTabUserView();
+        courseContentPage.verifyVideoConferenceUserView(
+            selectedCourse.videoConferenceYoutubeLink,
+            selectedCourse.videoConferenceDescription
+        );
+
+        // Navigate back to admin page
+        courseContentPage.navigateToAdminPage();
+
+        // ===== PART 9: Search & Update Course =====
+        System.out.println("\n===== PART 9: Search & Update Course =====");
 
         coursePage.navigateToCourseManagement();
         coursePage.searchCourse(selectedCourse.title);
@@ -177,8 +191,8 @@ public class AddingCourseTest extends BaseTest {
         coursePage.navigateToCourseManagement();
         coursePage.verifyUpdatedCourseInList(selectedCourse.updatedTitle, selectedCourse.updatedDescription);
 
-        // ===== PART 9: Search & Delete Course =====
-//        System.out.println("\n===== PART 9: Search & Delete Course =====");
+        // ===== PART 10: Search & Delete Course =====
+        System.out.println("\n===== PART 10: Search & Delete Course =====");
 
         // Search and open the updated course
         coursePage.navigateToCourseManagement();

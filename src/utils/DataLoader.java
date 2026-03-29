@@ -123,6 +123,32 @@ public class DataLoader {
                 districts.get(rand.nextInt(districts.size())) + ", TP.HCM";
     }
 
+    public static List<StudentInfo> loadStudentsFromJSON() throws Exception {
+        List<StudentInfo> students = new ArrayList<>();
+        String filePath = System.getProperty("user.dir") + "/src/resources/students.json";
+
+        JSONParser parser = new JSONParser();
+        JSONArray jsonArray = (JSONArray) parser.parse(new FileReader(filePath));
+
+        for (Object obj : jsonArray) {
+            JSONObject jsonObj = (JSONObject) obj;
+            StudentInfo student = new StudentInfo(
+                (String) jsonObj.get("fullName"),
+                (String) jsonObj.get("studentCode"),
+                (String) jsonObj.get("email"),
+                (String) jsonObj.get("phone"),
+                (String) jsonObj.get("dob"),
+                (String) jsonObj.get("address"),
+                (String) jsonObj.get("gender")
+            );
+            student.newAddress = (String) jsonObj.get("newAddress");
+            students.add(student);
+        }
+
+        System.out.println("Loaded " + students.size() + " students from JSON");
+        return students;
+    }
+
     public static List<CourseData> loadCoursesFromJSON() throws Exception {
         List<CourseData> courses = new ArrayList<>();
         String filePath = System.getProperty("user.dir") + "/src/resources/courses.json";
@@ -290,8 +316,37 @@ public class DataLoader {
             homework.questions.add(q);
         }
 
+        // Parse updated homework data
+        homework.updatedHomeworkName = (String) root.get("updatedHomeworkName");
+
+        JSONArray updatedQuestionsArray = (JSONArray) root.get("updatedQuestions");
+        if (updatedQuestionsArray != null) {
+            homework.updatedQuestions = new java.util.ArrayList<>();
+            for (Object obj : updatedQuestionsArray) {
+                JSONObject qObj = (JSONObject) obj;
+
+                QuestionData q = new QuestionData();
+                q.type = (String) qObj.get("type");
+                q.content = (String) qObj.get("content");
+
+                JSONArray answersArr = (JSONArray) qObj.get("answers");
+                if (answersArr != null) {
+                    q.answers = new java.util.ArrayList<>();
+                    for (Object a : answersArr) {
+                        q.answers.add((String) a);
+                    }
+                }
+
+                homework.updatedQuestions.add(q);
+            }
+        }
+
         System.out.println("Loaded homework: " + homework.homeworkName +
                            " with " + homework.questions.size() + " questions");
+        if (homework.updatedHomeworkName != null) {
+            System.out.println("Updated homework: " + homework.updatedHomeworkName +
+                               " with " + homework.updatedQuestions.size() + " updated questions");
+        }
         return homework;
     }
 }

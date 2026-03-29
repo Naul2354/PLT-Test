@@ -173,7 +173,7 @@ public class StudentManagementPage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(DIALOG)));
 
         WebElement deleteConfirm = wait.until(ExpectedConditions.elementToBeClickable(DELETE_BTN));
-        deleteConfirm.click();
+        helper.safeClick(deleteConfirm);
         System.out.println("Clicked Delete");
 
         helper.delay(300);

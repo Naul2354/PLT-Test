@@ -115,7 +115,7 @@ public class CourseManagementPage {
 
     public void uploadCourseThumbnail() {
         System.out.println("Uploading course thumbnail: " + IMAGE_FILE);
-        WebElement fileInput = driver.findElement(COURSE_FILE_INPUT);
+        WebElement fileInput = wait.until(ExpectedConditions.presenceOfElementLocated(COURSE_FILE_INPUT));
         fileInput.sendKeys(IMAGE_FILE);
         helper.delay(1500);
     }
