@@ -56,7 +56,9 @@ public class HomeworkManagementPage {
         System.out.println("Navigating to homework management...");
         driver.get("https://elearning.plt.pro.vn/quan-tri-vien/bai-tap");
         wait.until(ExpectedConditions.urlContains("/quan-tri-vien/bai-tap"));
-        helper.delay(1500);
+        // Wait for table to be present
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//table")));
+        helper.delay(2000);
     }
 
     public void clickAddNew() {
@@ -187,38 +189,125 @@ public class HomeworkManagementPage {
         WebElement reloadBtn = wait.until(ExpectedConditions.elementToBeClickable(
             By.xpath("//button[.//i[contains(@class,'mdi-refresh')] and contains(.,'Tải lại dữ liệu')]")));
         helper.safeClick(reloadBtn);
-        helper.delay(2000);
+        helper.delay(3000);
         System.out.println("Data reloaded");
     }
 
     public void verifyHomeworkInList(String expectedName) {
         System.out.println("\n--- Verify Homework In List ---");
+        System.out.println("Looking for: " + expectedName);
 
-        // Find the row containing the homework name
+        helper.delay(2000);
+
+        // Search all rows manually — match any cell that contains the expected name
         List<WebElement> rows = driver.findElements(By.xpath("//table//tbody//tr"));
         System.out.println("Found " + rows.size() + " row(s) in homework list");
 
         for (WebElement row : rows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            if (cells.size() >= 5) {
-                String tenDe = cells.get(0).getText().trim();
-                String soCauHoi = cells.get(1).getText().trim();
-                String nguoiTao = cells.get(2).getText().trim();
-                String ngayTao = cells.get(3).getText().trim();
-                String ngayCapNhat = cells.get(4).getText().trim();
-
-                if (tenDe.contains(expectedName)) {
+            // Cell 1 = Tên đề, Cell 2 = Số câu hỏi, Cell 3 = Người tạo, Cell 4 = Ngày tạo, Cell 5 = Ngày cập nhật
+            if (cells.size() >= 6) {
+                String tenDe = cells.get(1).getText().trim();
+                if (tenDe.equals(expectedName)) {
                     System.out.println("[PASS] Homework found in list:");
-                    System.out.println("  Tên đề      : " + tenDe);
-                    System.out.println("  Số câu hỏi  : " + soCauHoi);
-                    System.out.println("  Người tạo   : " + nguoiTao);
-                    System.out.println("  Ngày tạo    : " + ngayTao);
-                    System.out.println("  Ngày cập nhật: " + ngayCapNhat);
+                    System.out.println("  Tên đề       : " + tenDe);
+                    System.out.println("  Số câu hỏi   : " + cells.get(2).getText().trim());
+                    System.out.println("  Người tạo    : " + cells.get(3).getText().trim());
+                    System.out.println("  Ngày tạo     : " + cells.get(4).getText().trim());
+                    System.out.println("  Ngày cập nhật: " + cells.get(5).getText().trim());
                     return;
                 }
             }
         }
+
+        // Debug dump on failure
+        System.out.println("DEBUG: Homework not found, dumping all rows:");
+        for (int r = 0; r < rows.size(); r++) {
+            List<WebElement> cells = rows.get(r).findElements(By.tagName("td"));
+            StringBuilder sb = new StringBuilder("  Row " + (r + 1) + ": ");
+            for (WebElement cell : cells) {
+                sb.append("[").append(cell.getText().trim()).append("] ");
+            }
+            System.out.println(sb.toString());
+        }
         Assert.fail("Homework not found in list: " + expectedName);
+    }
+
+    public List<String> getHomeworkListAndPrint(String label) {
+        System.out.println("\n--- Homework List (" + label + ") ---");
+        helper.delay(2000);
+
+        List<String> homeworkNames = new java.util.ArrayList<>();
+        List<WebElement> rows = driver.findElements(By.xpath("//table//tbody//tr"));
+        System.out.println("Total: " + rows.size() + " homework(s)");
+
+        for (int r = 0; r < rows.size(); r++) {
+            List<WebElement> cells = rows.get(r).findElements(By.tagName("td"));
+            if (cells.size() >= 6) {
+                String tenDe = cells.get(1).getText().trim();
+                String soCauHoi = cells.get(2).getText().trim();
+                String nguoiTao = cells.get(3).getText().trim();
+                String ngayTao = cells.get(4).getText().trim();
+                String ngayCapNhat = cells.get(5).getText().trim();
+                homeworkNames.add(tenDe);
+                System.out.println("  " + (r + 1) + ". " + tenDe + " | " + soCauHoi
+                                 + " | " + nguoiTao + " | " + ngayTao + " | " + ngayCapNhat);
+            }
+        }
+        return homeworkNames;
+    }
+
+    // ==================== Delete Homework ====================
+
+    public void deleteHomework(String homeworkName) {
+        System.out.println("\n=== Deleting Homework: " + homeworkName + " ===");
+
+        helper.delay(1000);
+
+        // Find the row by exact match on Tên đề
+        List<WebElement> rows = driver.findElements(By.xpath("//table//tbody//tr"));
+        WebElement targetRow = null;
+        for (WebElement row : rows) {
+            List<WebElement> cells = row.findElements(By.tagName("td"));
+            if (cells.size() >= 2 && cells.get(1).getText().trim().equals(homeworkName)) {
+                targetRow = row;
+                break;
+            }
+        }
+
+        if (targetRow == null) {
+            Assert.fail("Cannot find row to delete for homework: " + homeworkName);
+        }
+
+        // Click the red X (mdi-close) button
+        WebElement deleteBtn = targetRow.findElement(
+            By.xpath(".//button[contains(@class,'red--text') and .//i[contains(@class,'mdi-close')]]"));
+        helper.safeClick(deleteBtn);
+        helper.delay(1500);
+
+        // Wait for confirm dialog "Xoá bài tập"
+        wait.until(ExpectedConditions.visibilityOfElementLocated(
+            By.xpath("//*[contains(text(),'Xoá bài tập')]")));
+        System.out.println("Confirm dialog visible");
+
+        // Click "Xoá" button to confirm
+        WebElement confirmBtn = wait.until(ExpectedConditions.elementToBeClickable(
+            By.xpath("//div[contains(@class,'v-dialog__content') and contains(@class,'active')]//button[.//span[contains(normalize-space(),'Xoá')]]")));
+        helper.safeClick(confirmBtn);
+        helper.delay(2000);
+
+        // Wait for success message
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//*[contains(text(),'Xoá dữ liệu thành công') or contains(text(),'xoá') and contains(text(),'thành công')]")));
+            System.out.println("Delete success message visible");
+        } catch (Exception e) {
+            System.out.println("WARNING: Success message not found");
+        }
+
+        helper.clickOK();
+        helper.delay(1500);
+        System.out.println("Homework deleted: " + homeworkName);
     }
 
     // ==================== Edit (Update) Homework ====================
@@ -226,10 +315,24 @@ public class HomeworkManagementPage {
     public void clickEditHomework(String homeworkName) {
         System.out.println("Clicking edit for homework: " + homeworkName);
 
-        // Find the row with the homework name, then click the pencil icon
-        WebElement row = wait.until(ExpectedConditions.visibilityOfElementLocated(
-            By.xpath("//table//tr[.//td[contains(.,'" + homeworkName + "')]]")));
-        WebElement pencilBtn = row.findElement(
+        helper.delay(1000);
+
+        // Find the row by exact match on Tên đề (cell index 1)
+        List<WebElement> rows = driver.findElements(By.xpath("//table//tbody//tr"));
+        WebElement targetRow = null;
+        for (WebElement row : rows) {
+            List<WebElement> cells = row.findElements(By.tagName("td"));
+            if (cells.size() >= 2 && cells.get(1).getText().trim().equals(homeworkName)) {
+                targetRow = row;
+                break;
+            }
+        }
+
+        if (targetRow == null) {
+            Assert.fail("Cannot find row to edit for homework: " + homeworkName);
+        }
+
+        WebElement pencilBtn = targetRow.findElement(
             By.xpath(".//a[.//i[contains(@class,'mdi-pencil')]]"));
         helper.safeClick(pencilBtn);
         helper.delay(2000);

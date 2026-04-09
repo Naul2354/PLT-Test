@@ -49,8 +49,9 @@ POL_Test/
 │   │   ├── courses.json              # Course test data (6 courses with chapters, forum, VC)
 │   │   ├── chapters.json             # Chapter test data
 │   │   ├── lessons.json              # Lesson test data
-│   │   ├── homework.json             # Homework & question test data
-│   │   ├── student_test_data.csv     # Student test data
+│   │   ├── homework.json             # Homework + updated homework & questions data
+│   │   ├── students.json             # Student test data (with newAddress for edit step)
+│   │   ├── student_test_data.csv     # Student test data (legacy CSV)
 │   │   ├── vietnamese_names.csv      # Random Vietnamese name generation
 │   │   ├── vietnamese_locations.csv  # Random address generation
 │   │   └── data.txt                  # Expected course content for verification
@@ -109,10 +110,10 @@ mvn test -Dtest=tests.user.UserViewForumVCTest
 
 | Test | Description |
 |------|-------------|
-| `StudentManagementTest` | Full CRUD — add student with random data, verify, edit address, verify, delete, verify gone |
+| `StudentManagementTest` | Full CRUD — load student from JSON, add, print list, verify, edit address (from JSON), verify, delete, verify gone |
 | `AddingCourseTest` | Full course lifecycle (10 parts) — create course, add learners (random + hardcoded), add chapters/lessons/materials, add forum & video conference, user view verification (content, forum comment, VC), update course, delete course |
 | `CourseExpandTest` | Expand all chapters/lessons, compare against expected data file, log results |
-| `HomeworkTest` | Create homework with multiple question types (multi-choice, audio, image, video, essay) |
+| `HomeworkTest` | Full homework lifecycle (5 parts) — add, reload & verify, update (name, thumbnail, all questions), verify update, delete, compare list before/after |
 | `UserViewForumVCTest` | Standalone user view test — verify course content, forum (add comment & send), video conference |
 
 ### AddingCourseTest Workflow (10 Parts)
@@ -129,6 +130,16 @@ mvn test -Dtest=tests.user.UserViewForumVCTest
 | 8 | User view — verify course content, forum (add comment), video conference |
 | 9 | Search & update course (title, description, thumbnail) |
 | 10 | Delete learners, delete course, verify cleanup |
+
+### HomeworkTest Workflow (5 Parts)
+
+| Part | Description |
+|------|-------------|
+| 1 | Add homework — name, thumbnail, 6 questions (default × 2, audio, image, video, essay) |
+| 2 | Navigate back, click "Tải lại dữ liệu", verify homework appears in list (Tên đề, Số câu hỏi, Người tạo, Ngày tạo, Ngày cập nhật) |
+| 3 | Click pencil → edit page, update name + thumbnail, expand each question → replace content & answers |
+| 4 | Reload & verify updated homework name appears in list |
+| 5 | Delete homework via red X icon, confirm dialog, verify list size matches initial state (before add) |
 
 ## Test Reports
 

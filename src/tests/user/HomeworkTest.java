@@ -3,6 +3,7 @@ package tests.user;
 import base.BaseTest;
 import models.HomeworkData;
 import models.QuestionData;
+import org.testng.Assert;
 import pages.HomeworkManagementPage;
 import pages.LoginPage;
 import utils.DataLoader;
@@ -10,12 +11,14 @@ import utils.SeleniumHelper;
 
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 public class HomeworkTest extends BaseTest {
 
     @Test
-    public void testAddAndUpdateHomework() throws Exception {
+    public void testAddUpdateAndDeleteHomework() throws Exception {
         System.out.println("========================================");
-        System.out.println("TEST: Add & Update Homework with Questions");
+        System.out.println("TEST: Add, Update & Delete Homework");
         System.out.println("========================================\n");
 
         // Load test data
@@ -28,6 +31,9 @@ public class HomeworkTest extends BaseTest {
         // Login & navigate
         loginPage.loginAsAdmin();
         homeworkPage.navigateToHomeworkManagement();
+
+        // Capture initial homework list (for compare after delete)
+        List<String> listBefore = homeworkPage.getHomeworkListAndPrint("BEFORE ADD");
 
         // ===== PART 1: Add Homework =====
         System.out.println("\n===== PART 1: Add Homework =====");
@@ -85,6 +91,27 @@ public class HomeworkTest extends BaseTest {
         homeworkPage.clickReload();
         homeworkPage.verifyHomeworkInList(homework.updatedHomeworkName);
 
+        // ===== PART 5: Delete Homework =====
+        System.out.println("\n===== PART 5: Delete Homework =====");
+
+        homeworkPage.deleteHomework(homework.updatedHomeworkName);
+
+        // Reload and capture list after delete
+        homeworkPage.clickReload();
+        List<String> listAfter = homeworkPage.getHomeworkListAndPrint("AFTER DELETE");
+
+        // Compare: listAfter should NOT contain the updated homework name
+        Assert.assertFalse(listAfter.contains(homework.updatedHomeworkName),
+            "Homework still exists after delete: " + homework.updatedHomeworkName);
+
+        // Compare: listAfter size should match listBefore size (we added 1 then deleted 1)
+        System.out.println("\nList size BEFORE add : " + listBefore.size());
+        System.out.println("List size AFTER delete: " + listAfter.size());
+        Assert.assertEquals(listAfter.size(), listBefore.size(),
+            "List size mismatch! Before=" + listBefore.size() + ", After=" + listAfter.size());
+
+        System.out.println("[PASS] Homework successfully deleted");
+
         // ===== SUMMARY =====
         System.out.println("\n========================================");
         System.out.println("ALL TESTS PASSED");
@@ -93,6 +120,8 @@ public class HomeworkTest extends BaseTest {
         System.out.println("Questions added  : " + homework.questions.size());
         System.out.println("Homework updated : " + homework.updatedHomeworkName);
         System.out.println("Questions updated: " + (homework.updatedQuestions != null ? homework.updatedQuestions.size() : 0));
+        System.out.println("Homework deleted : " + homework.updatedHomeworkName);
+        System.out.println("List size match  : " + listBefore.size() + " == " + listAfter.size());
         System.out.println("========================================\n");
     }
 }

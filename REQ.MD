@@ -25,8 +25,8 @@ Students are required to build an automated testing program for the POL Website 
 - [x] Access a course and add a forum
 - [x] Access a course and add a video conference
 - [x] Successfully add a new assignment
-- [ ] Successfully update an assignment
-- [ ] Successfully delete an assignment
+- [x] Successfully update an assignment
+- [x] Successfully delete an assignment
 
 **General Requirements:** Each function must include:
 - Expected Result
