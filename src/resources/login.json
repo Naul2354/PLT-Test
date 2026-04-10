@@ -1,0 +1,23 @@
+{
+  "valid": {
+    "email": "test.pltsolutions@gmail.com",
+    "password": "plt@intern_051224"
+  },
+  "invalid": [
+    {
+      "email": "wrong.email@gmail.com",
+      "password": "wrongpassword123",
+      "case": "Wrong email and wrong password"
+    },
+    {
+      "email": "test.pltsolutions@gmail.com",
+      "password": "wrongpassword123",
+      "case": "Correct email but wrong password"
+    },
+    {
+      "email": "wrong.email@gmail.com",
+      "password": "plt@intern_051224",
+      "case": "Wrong email but correct password"
+    }
+  ]
+}

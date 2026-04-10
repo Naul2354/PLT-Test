@@ -1,0 +1,52 @@
+[
+  {
+    "case": "Missing fullName",
+    "fullName": null,
+    "studentCode": "SVFAIL001",
+    "email": "fail001@gmail.com",
+    "phone": "0912000001",
+    "dob": "01/15/2005",
+    "address": "123 Test Street TP.HCM",
+    "gender": "Nam"
+  },
+  {
+    "case": "Missing studentCode",
+    "fullName": "Nguyễn Văn Test",
+    "studentCode": null,
+    "email": "fail002@gmail.com",
+    "phone": "0912000002",
+    "dob": "01/15/2005",
+    "address": "123 Test Street TP.HCM",
+    "gender": "Nữ"
+  },
+  {
+    "case": "Missing email",
+    "fullName": "Trần Thị Test",
+    "studentCode": "SVFAIL003",
+    "email": null,
+    "phone": "0912000003",
+    "dob": "01/15/2005",
+    "address": "123 Test Street TP.HCM",
+    "gender": "Nam"
+  },
+  {
+    "case": "Missing phone",
+    "fullName": "Lê Văn Test",
+    "studentCode": "SVFAIL004",
+    "email": "fail004@gmail.com",
+    "phone": null,
+    "dob": "01/15/2005",
+    "address": "123 Test Street TP.HCM",
+    "gender": "Nam"
+  },
+  {
+    "case": "Missing all fields",
+    "fullName": null,
+    "studentCode": null,
+    "email": null,
+    "phone": null,
+    "dob": null,
+    "address": null,
+    "gender": null
+  }
+]

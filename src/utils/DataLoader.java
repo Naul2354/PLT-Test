@@ -2,8 +2,11 @@ package utils;
 
 import models.ChapterData;
 import models.CourseData;
+import models.CourseFailCase;
 import models.HomeworkData;
+import models.HomeworkFailCase;
 import models.LessonData;
+import models.LoginData;
 import models.QuestionData;
 import models.StudentInfo;
 
@@ -121,6 +124,113 @@ public class DataLoader {
         return (1 + rand.nextInt(500)) + " " +
                 streets.get(rand.nextInt(streets.size())) + ", " +
                 districts.get(rand.nextInt(districts.size())) + ", TP.HCM";
+    }
+
+    public static List<HomeworkFailCase> loadHomeworksFailFromJSON() throws Exception {
+        List<HomeworkFailCase> cases = new ArrayList<>();
+        String filePath = System.getProperty("user.dir") + "/src/resources/homeworks_fail.json";
+
+        JSONParser parser = new JSONParser();
+        JSONArray jsonArray = (JSONArray) parser.parse(new FileReader(filePath));
+
+        for (Object obj : jsonArray) {
+            JSONObject jsonObj = (JSONObject) obj;
+
+            List<String> answers = new ArrayList<>();
+            JSONArray answersArr = (JSONArray) jsonObj.get("answers");
+            if (answersArr != null) {
+                for (Object a : answersArr) {
+                    answers.add((String) a);
+                }
+            }
+
+            cases.add(new HomeworkFailCase(
+                (String) jsonObj.get("case"),
+                (Boolean) jsonObj.get("uploadThumbnail"),
+                (String) jsonObj.get("homeworkName"),
+                (Boolean) jsonObj.get("addQuestion"),
+                (String) jsonObj.get("questionContent"),
+                answers
+            ));
+        }
+
+        System.out.println("Loaded " + cases.size() + " homework failure case(s) from JSON");
+        return cases;
+    }
+
+    public static List<CourseFailCase> loadCoursesFailFromJSON() throws Exception {
+        List<CourseFailCase> cases = new ArrayList<>();
+        String filePath = System.getProperty("user.dir") + "/src/resources/courses_fail.json";
+
+        JSONParser parser = new JSONParser();
+        JSONArray jsonArray = (JSONArray) parser.parse(new FileReader(filePath));
+
+        for (Object obj : jsonArray) {
+            JSONObject jsonObj = (JSONObject) obj;
+            cases.add(new CourseFailCase(
+                (String) jsonObj.get("case"),
+                (Boolean) jsonObj.get("uploadThumbnail"),
+                (String) jsonObj.get("title"),
+                (String) jsonObj.get("description")
+            ));
+        }
+
+        System.out.println("Loaded " + cases.size() + " course failure case(s) from JSON");
+        return cases;
+    }
+
+    public static LoginData loadLoginFromJSON() throws Exception {
+        String filePath = System.getProperty("user.dir") + "/src/resources/login.json";
+
+        JSONParser parser = new JSONParser();
+        JSONObject root = (JSONObject) parser.parse(new FileReader(filePath));
+
+        LoginData login = new LoginData();
+        JSONObject valid = (JSONObject) root.get("valid");
+        login.validEmail = (String) valid.get("email");
+        login.validPassword = (String) valid.get("password");
+
+        login.invalidLogins = new ArrayList<>();
+        JSONArray invalidArr = (JSONArray) root.get("invalid");
+        for (Object obj : invalidArr) {
+            JSONObject inv = (JSONObject) obj;
+            login.invalidLogins.add(new LoginData.InvalidLogin(
+                (String) inv.get("email"),
+                (String) inv.get("password"),
+                (String) inv.get("case")
+            ));
+        }
+
+        System.out.println("Loaded login data: 1 valid + " + login.invalidLogins.size() + " invalid");
+        return login;
+    }
+
+    /** Load failure-test student data — each entry has a "case" label and may have null fields. */
+    public static List<StudentInfo> loadStudentsFailFromJSON() throws Exception {
+        List<StudentInfo> students = new ArrayList<>();
+        String filePath = System.getProperty("user.dir") + "/src/resources/students_fail.json";
+
+        JSONParser parser = new JSONParser();
+        JSONArray jsonArray = (JSONArray) parser.parse(new FileReader(filePath));
+
+        for (Object obj : jsonArray) {
+            JSONObject jsonObj = (JSONObject) obj;
+            StudentInfo student = new StudentInfo(
+                (String) jsonObj.get("fullName"),
+                (String) jsonObj.get("studentCode"),
+                (String) jsonObj.get("email"),
+                (String) jsonObj.get("phone"),
+                (String) jsonObj.get("dob"),
+                (String) jsonObj.get("address"),
+                (String) jsonObj.get("gender")
+            );
+            // Stash the case label in newAddress field (reusing existing field — no model change)
+            student.newAddress = (String) jsonObj.get("case");
+            students.add(student);
+        }
+
+        System.out.println("Loaded " + students.size() + " failure-test student case(s) from JSON");
+        return students;
     }
 
     public static List<StudentInfo> loadStudentsFromJSON() throws Exception {

@@ -1,0 +1,34 @@
+[
+  {
+    "case": "Missing homework name",
+    "uploadThumbnail": true,
+    "homeworkName": null,
+    "addQuestion": false,
+    "questionContent": null,
+    "answers": []
+  },
+  {
+    "case": "Missing thumbnail",
+    "uploadThumbnail": false,
+    "homeworkName": "Homework Test Missing Thumbnail",
+    "addQuestion": false,
+    "questionContent": null,
+    "answers": []
+  },
+  {
+    "case": "Question without content",
+    "uploadThumbnail": true,
+    "homeworkName": "Homework With Empty Question",
+    "addQuestion": true,
+    "questionContent": null,
+    "answers": ["Answer A", "Answer B", "Answer C", "Answer D"]
+  },
+  {
+    "case": "Question with only 3 answers (missing 1)",
+    "uploadThumbnail": true,
+    "homeworkName": "Homework With Incomplete Answers",
+    "addQuestion": true,
+    "questionContent": "What is Selenium used for?",
+    "answers": ["Web automation", "Database management", "OS scripting"]
+  }
+]

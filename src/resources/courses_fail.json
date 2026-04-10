@@ -1,0 +1,20 @@
+[
+  {
+    "case": "Missing thumbnail",
+    "uploadThumbnail": false,
+    "title": "Course Test Missing Thumbnail",
+    "description": "This course has name and description but no thumbnail"
+  },
+  {
+    "case": "Missing name",
+    "uploadThumbnail": true,
+    "title": null,
+    "description": "This course has thumbnail and description but no name"
+  },
+  {
+    "case": "Missing description",
+    "uploadThumbnail": true,
+    "title": "Course Test Missing Description",
+    "description": null
+  }
+]
