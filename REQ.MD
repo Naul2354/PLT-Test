@@ -35,6 +35,40 @@ Students are required to build an automated testing program for the POL Website 
 
 ---
 
+## 1.1. Negative Tests (Failure Scenarios)
+
+These tests verify that the system rejects invalid input and shows the correct error popup.
+
+### Login Failure (`LoginTest`)
+- [x] Wrong email and wrong password → "Đăng nhập không thành công"
+- [x] Correct email but wrong password → "Đăng nhập không thành công"
+- [x] Wrong email but correct password → "Đăng nhập không thành công"
+- [x] Verify URL stays on `/dang-nhap` (not redirected to `/trang-chu`)
+- [x] Valid login (control case) → redirect to `/trang-chu`
+
+### Add Student Failure (`AddStudentFailTest`)
+Verify SweetAlert2 popup `"Thông tin nhập thiếu"` appears for each case:
+- [x] Missing fullName
+- [x] Missing studentCode
+- [x] Missing email
+- [x] Missing phone
+- [x] Missing all fields
+
+### Add Course Failure (`AddCourseFailTest`)
+Verify popup `"Thông tin nhập thiếu"` appears for each case:
+- [x] Missing thumbnail (name + description filled)
+- [x] Missing course name (thumbnail + description filled)
+- [x] Missing description (thumbnail + name filled)
+
+### Add Homework Failure (`AddHomeworkFailTest`)
+Verify SweetAlert2 error popup appears with the correct validation message:
+- [x] Missing homework name → "Tên đề thi còn thiếu"
+- [x] Missing thumbnail → "Ảnh bìa đề thi còn thiếu"
+- [x] Question added but no question content → "Thông tin câu hỏi còn thiếu"
+- [x] Question added with only 3 of 4 answers → "Câu trả lời còn thiếu ở câu hỏi số 1"
+
+---
+
 ## 2. UI and List Validation
 
 ### 2.1. Left Menu Validation
