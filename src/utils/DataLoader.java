@@ -128,7 +128,7 @@ public class DataLoader {
 
     public static List<HomeworkFailCase> loadHomeworksFailFromJSON() throws Exception {
         List<HomeworkFailCase> cases = new ArrayList<>();
-        String filePath = System.getProperty("user.dir") + "/src/resources/homeworks_fail.json";
+        String filePath = System.getProperty("user.dir") + "/src/resources/homework/homeworks_fail.json";
 
         JSONParser parser = new JSONParser();
         JSONArray jsonArray = (JSONArray) parser.parse(new FileReader(filePath));
@@ -160,7 +160,7 @@ public class DataLoader {
 
     public static List<CourseFailCase> loadCoursesFailFromJSON() throws Exception {
         List<CourseFailCase> cases = new ArrayList<>();
-        String filePath = System.getProperty("user.dir") + "/src/resources/courses_fail.json";
+        String filePath = System.getProperty("user.dir") + "/src/resources/course/courses_fail.json";
 
         JSONParser parser = new JSONParser();
         JSONArray jsonArray = (JSONArray) parser.parse(new FileReader(filePath));
@@ -180,7 +180,7 @@ public class DataLoader {
     }
 
     public static LoginData loadLoginFromJSON() throws Exception {
-        String filePath = System.getProperty("user.dir") + "/src/resources/login.json";
+        String filePath = System.getProperty("user.dir") + "/src/resources/login/login.json";
 
         JSONParser parser = new JSONParser();
         JSONObject root = (JSONObject) parser.parse(new FileReader(filePath));
@@ -208,7 +208,7 @@ public class DataLoader {
     /** Load failure-test student data — each entry has a "case" label and may have null fields. */
     public static List<StudentInfo> loadStudentsFailFromJSON() throws Exception {
         List<StudentInfo> students = new ArrayList<>();
-        String filePath = System.getProperty("user.dir") + "/src/resources/students_fail.json";
+        String filePath = System.getProperty("user.dir") + "/src/resources/student/students_fail.json";
 
         JSONParser parser = new JSONParser();
         JSONArray jsonArray = (JSONArray) parser.parse(new FileReader(filePath));
@@ -235,7 +235,7 @@ public class DataLoader {
 
     public static List<StudentInfo> loadStudentsFromJSON() throws Exception {
         List<StudentInfo> students = new ArrayList<>();
-        String filePath = System.getProperty("user.dir") + "/src/resources/students.json";
+        String filePath = System.getProperty("user.dir") + "/src/resources/student/students.json";
 
         JSONParser parser = new JSONParser();
         JSONArray jsonArray = (JSONArray) parser.parse(new FileReader(filePath));
@@ -261,7 +261,7 @@ public class DataLoader {
 
     public static List<CourseData> loadCoursesFromJSON() throws Exception {
         List<CourseData> courses = new ArrayList<>();
-        String filePath = System.getProperty("user.dir") + "/src/resources/courses.json";
+        String filePath = System.getProperty("user.dir") + "/src/resources/course/courses.json";
 
         JSONParser parser = new JSONParser();
         JSONArray jsonArray = (JSONArray) parser.parse(new FileReader(filePath));
@@ -342,7 +342,7 @@ public class DataLoader {
 
     public static List<ChapterData> loadChaptersFromJSON() throws Exception {
         List<ChapterData> chapters = new ArrayList<>();
-        String filePath = System.getProperty("user.dir") + "/src/resources/chapters.json";
+        String filePath = System.getProperty("user.dir") + "/src/resources/course/chapters.json";
 
         JSONParser parser = new JSONParser();
         JSONArray jsonArray = (JSONArray) parser.parse(new FileReader(filePath));
@@ -361,7 +361,7 @@ public class DataLoader {
 
     public static List<LessonData> loadLessonsFromJSON() throws Exception {
         List<LessonData> lessons = new ArrayList<>();
-        String filePath = System.getProperty("user.dir") + "/src/resources/lessons.json";
+        String filePath = System.getProperty("user.dir") + "/src/resources/course/lessons.json";
 
         JSONParser parser = new JSONParser();
         JSONArray jsonArray = (JSONArray) parser.parse(new FileReader(filePath));
@@ -379,7 +379,7 @@ public class DataLoader {
     }
 
     public static HomeworkData loadHomeworkFromJSON() throws Exception {
-        String filePath = System.getProperty("user.dir") + "/src/resources/homework.json";
+        String filePath = System.getProperty("user.dir") + "/src/resources/homework/homework.json";
 
         JSONParser parser = new JSONParser();
         JSONObject root = (JSONObject) parser.parse(new FileReader(filePath));
