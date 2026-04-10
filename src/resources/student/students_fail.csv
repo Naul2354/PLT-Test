@@ -1,0 +1,6 @@
+case,fullName,studentCode,email,phone,dob,address,gender
+Missing fullName,,SVFAIL001,fail001@gmail.com,0912000001,01/15/2005,123 Test Street TP.HCM,Nam
+Missing studentCode,Nguyễn Văn Test,,fail002@gmail.com,0912000002,01/15/2005,123 Test Street TP.HCM,Nữ
+Missing email,Trần Thị Test,SVFAIL003,,0912000003,01/15/2005,123 Test Street TP.HCM,Nam
+Missing phone,Lê Văn Test,SVFAIL004,fail004@gmail.com,,01/15/2005,123 Test Street TP.HCM,Nam
+Missing all fields,,,,,,,
